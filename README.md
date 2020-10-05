@@ -6,7 +6,7 @@
 - Install Ansible `pacman -Syu python ansible`
 - Add plugins: `ansible-galaxy install kewlfft.aur`
 - Add collections: `ansible-galaxy collection install community.general`
-- Run playbook: `ansible-playbook site.yml`
+- Run playbook: `ansible-playbook setup.yml`
 - Set password for your user: `passwd <your-user>`
 - Reboot
 
