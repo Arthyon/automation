@@ -1,0 +1,67 @@
+---
+- name: install fonts
+  pacman:
+    name:
+      - adobe-source-code-pro-fonts
+      - adobe-source-han-sans-jp-fonts
+      - noto-fonts
+      - noto-fonts-emoji
+      - powerline-fonts
+      - ttf-fira-code # code
+      - ttf-font-awesome # polybar
+      - ttf-liberation # steam
+  become: true
+
+- name: install GTK
+  pacman:
+    name:
+      - gtk3
+      - gtk2
+  become: true
+
+- name: install display configuration tools
+  pacman:
+    name:
+      - arandr
+      - lxrandr
+      - lxappearance
+  become: true
+
+- name: install aur gui themes
+  aur:
+    name:
+      - vertex-themes
+      - paper-icon-theme
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: create gtk3 configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/gtk-3.0
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: configure gtk3
+  template:
+    src: gtk/settings.ini
+    dest: /home/{{ archlinux_username }}/.config/gtk-3.0/settings.ini
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: configure gtk2
+  template:
+    src: "gtk/{{item}}"
+    dest: /home/{{ archlinux_username }}/{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+  with_items:
+    - .gtkrc-2.0
+    - .gtkrc-2.0.mine
+  become: true
+  become_user: "{{ archlinux_username }}"

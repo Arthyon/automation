@@ -1,0 +1,29 @@
+---
+- name: install lxdm
+  pacman:
+    name:
+      - lxdm-gtk3
+  become: true
+
+- name: create lxdm configuration directory
+  file:
+    name: /etc/lxdm
+    state: directory
+    owner: root
+    group: root
+  become: true
+
+- name: configure lxdm
+  template:
+    src: lxdm.conf
+    dest: /etc/lxdm/lxdm.conf
+    owner: root
+    group: root
+  become: true
+
+- name: start lxdm service
+  systemd:
+    state: started
+    name: lxdm
+    enabled: true
+  become: yes

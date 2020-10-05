@@ -1,0 +1,21 @@
+- name: install rofi
+  pacman:
+    name: rofi
+  become: true
+  
+- name: create rofi configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/rofi
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: configure rofi
+  copy:
+    src: rofi/config.rasi
+    dest: /home/{{ archlinux_username }}/.config/rofi/config.rasi
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+

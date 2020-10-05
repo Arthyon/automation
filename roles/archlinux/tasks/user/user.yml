@@ -1,0 +1,57 @@
+---
+- name: create normal user
+  user:
+    name: "{{ archlinux_username }}"
+    group: users
+    home: /home/{{ archlinux_username }}
+    groups:
+      - wheel
+    shell: /bin/zsh
+  become: true
+
+- name: create home directory
+  file:
+    name: /home/{{ archlinux_username }}
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: create scripts directory
+  file:
+    name: /home/{{ archlinux_username }}/bin
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: create config directory
+  file:
+    name: /home/{{ archlinux_username }}/.config
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: copy dotfiles
+  copy:
+    src: "{{item}}"
+    dest: /home/{{ archlinux_username}}/.{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+  with_items:
+    - zshenv
+    - zshrc
+    - zprofile
+    - xprofile
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: do not require pwd to shutdown via cli
+  lineinfile:
+    path: /etc/sudoers.d/12-no-pwd-for-power
+    line: "{{ archlinux_username }} {{ archlinux_hostname }} =NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot"
+    create: yes
+    validate: "visudo -cf %s"

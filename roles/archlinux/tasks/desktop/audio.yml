@@ -1,0 +1,11 @@
+---
+- name: install audio tools
+  pacman:
+    name:
+      - alsa-firmware
+      - alsa-utils
+      - paprefs
+      - pavucontrol
+      - pulseaudio
+      - pulseaudio-alsa
+  become: true

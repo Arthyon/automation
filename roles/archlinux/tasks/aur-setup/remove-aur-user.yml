@@ -1,0 +1,19 @@
+---
+- name: kill gpg agent before deleting user
+  become: yes
+  become_user: aur_builder
+  shell:
+    cmd: gpgconf --kill gpg-agent
+
+- name: Remove aur user
+  user:
+    name: aur_builder
+    state: absent
+    remove: true
+  become: true
+
+- name: Remove user from sudoers
+  file:
+    path: /etc/sudoers.d/11-install-aur-builder
+    state: absent
+  become: true

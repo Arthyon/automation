@@ -1,0 +1,15 @@
+" Enable Vim features
+set nocompatible
+set enc=utf-8
+syntax on
+set hlsearch
+set nowrap
+set relativenumber
+
+" Tab management
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent

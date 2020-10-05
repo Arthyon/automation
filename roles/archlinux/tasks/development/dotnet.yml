@@ -1,0 +1,17 @@
+---
+- name: install dotnet core
+  pacman:
+    name:
+      - dotnet-sdk
+      - dotnet-runtime
+      - aspnet-runtime
+  become: true
+
+- name: copy zshenv file
+  copy:
+    src: "zshenv.d/50-dotnet"
+    dest: /home/{{ archlinux_username}}/.config/zshenv.d/50-dotnet
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"

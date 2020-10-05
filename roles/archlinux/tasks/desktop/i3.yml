@@ -1,0 +1,35 @@
+---
+- name: install i3
+  pacman:
+    name:
+      - i3-wm
+      - i3lock-color
+  become: true
+
+- name: create i3 configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/i3
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: configure i3
+  template:
+    src: i3/config
+    dest: /home/{{ archlinux_username }}/.config/i3/config
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: install i3 quickterm
+  pip:
+    name: i3-quickterm
+
+- name: configure i3 quickterm
+  template:
+    src: i3/i3-quickterm.json
+    dest: /home/{{ archlinux_username }}/.config/i3/i3-quickterm.json
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true

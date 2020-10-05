@@ -1,0 +1,9 @@
+alias ll='ls -lah --group-directories-first --color=auto'
+alias shutdown="sudo systemctl poweroff"
+alias reboot="sudo systemctl reboot"
+# Copy to clipboard instead of Primary X Buffer
+alias xclip="xclip -se c"
+# Shortcut to go up one directory
+alias ..='cd ..'
+# Calendar week starts at monday
+alias cal="cal -m"

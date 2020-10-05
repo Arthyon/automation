@@ -1,0 +1,2 @@
+# Add globally installed npm packages to path
+PATH="$HOME/.node_modules/bin:$PATH"

@@ -1,0 +1,29 @@
+- name: install polybar
+  aur:
+    name: polybar
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: create polybar configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/polybar
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: copy polybar configuration files
+  copy:
+    src: "polybar/{{item}}"
+    dest: /home/{{ archlinux_username}}/.config/polybar/{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: 0755
+  with_items:
+    - config
+    - inputlang.sh
+    - launch.sh
+    - spotify.sh
+  become: true
+  become_user: "{{ archlinux_username }}"

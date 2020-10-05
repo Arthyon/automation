@@ -1,0 +1,32 @@
+- name: install nvm
+  aur:
+    name:
+      - nvm
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: Install node and set version
+  shell: "source /usr/share/nvm/init-nvm.sh && nvm install {{ archlinux_node_version }} && nvm alias default {{ archlinux_node_version }}"
+  become: yes
+  become_method: su
+  become_user: "{{ archlinux_username }}"
+  become_flags: "-s /usr/bin/zsh"
+
+- name: copy zshenv file
+  copy:
+    src: "zshenv.d/50-node"
+    dest: /home/{{ archlinux_username}}/.config/zshenv.d/50-node
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: copy zshrc file
+  copy:
+    src: "zsh.d/50-node"
+    dest: /home/{{ archlinux_username}}/.config/zsh.d/50-node
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"

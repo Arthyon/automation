@@ -1,0 +1,4 @@
+# Fixing wrong focus events for GTK apps in i3
+GDK_CORE_DEVICE_EVENTS=1
+
+exec i3

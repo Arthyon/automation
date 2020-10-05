@@ -1,0 +1,33 @@
+---
+- name: install networking tools
+  pacman:
+    name:
+      - iwd
+      - dhcpcd
+  become: true
+
+- name: start iwd daemon
+  systemd:
+    state: started
+    name: iwd
+    enabled: true
+  become: yes
+
+- name: start dhcpcd daemon
+  systemd:
+    state: started
+    name: dhcpcd
+    enabled: true
+  become: yes
+
+- name: Set hostname
+  hostname:
+    name: "{{ archlinux_hostname }}"
+
+
+- name: configure hosts file
+  template:
+    src: hosts
+    dest: /etc/hosts
+    owner: root
+    group: root

@@ -1,0 +1,26 @@
+---
+- name: install azure storage emulator Azurite
+  community.general.npm:
+    name: azurite
+    global: true
+    state: present
+  become: yes
+  become_user: "{{ archlinux_username }}"
+  environment:
+    PATH: "/home/{{ archlinux_username }}/.nvm/versions/node/v{{ archlinux_node_version }}/bin:{{ ansible_env.PATH }}"
+
+- name: install azure tools (AUR)
+  aur:
+    name:
+      - azure-functions-core-tools-bin
+      - azure-cli
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: Install Microsoft Credential Provider
+  shell:
+    cmd: "wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash"
+    warn: false
+  become: yes
+  become_user: "{{ archlinux_username }}"

@@ -1,0 +1,65 @@
+---
+- name: install utilities
+  pacman:
+    name:
+      - curl
+      - jq
+      - less
+      - which
+      - xclip
+      - scrot
+  become: true
+
+- name: install applications
+  pacman:
+    name:
+      - firefox
+      - keepassxc
+      - thunderbird
+      - steam
+  become: true
+
+- name: import gpg keys for AUR packages
+  become: yes
+  become_user: "{{ archlinux_username }}"
+  shell:
+    cmd: curl {{ item }} | gpg --import -
+    warn: false
+  with_items:
+    - https://download.spotify.com/debian/pubkey.gpg
+    - https://linux.dropbox.com/fedora/rpm-public-key.asc
+
+- name: import gpg keys for AUR packages for build user
+  become: yes
+  become_user: aur_builder
+  shell:
+    cmd: curl {{ item }} | gpg --import -
+    warn: false
+  with_items:
+    - https://download.spotify.com/debian/pubkey.gpg
+    - https://linux.dropbox.com/fedora/rpm-public-key.asc
+
+- name: install from aur
+  aur:
+    name:
+      - visual-studio-code-bin
+      - yay
+      - dropbox
+      - slack-desktop
+      - teams
+      # - spotify # GPG key has expired
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: Add spotify keybindings
+  blockinfile:
+    path: "/home/{{ archlinux_username }}/.config/i3/config"
+    block: |
+      bindsym XF86AudioPlay exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+      bindsym XF86AudioNext exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+      bindsym XF86AudioPrev exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+      bindsym XF86AudioStop exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    marker: "# {mark} Media keys specific to spotify"
+  become: yes
+  become_user: "{{ archlinux_username }}"

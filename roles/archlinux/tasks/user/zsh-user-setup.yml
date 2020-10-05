@@ -1,0 +1,49 @@
+---
+- name: Clone oh-my-zsh repo
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: /home/{{ archlinux_username }}/.oh-my-zsh
+
+- name: create zsh configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/zsh.d
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: create zsh env configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/zshenv.d
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: copy zshrc files
+  copy:
+    src: "zsh.d/{{item}}"
+    dest: /home/{{ archlinux_username}}/.config/zsh.d/{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+  with_items:
+    - 10-aliases
+    - 10-completion
+    - 10-history
+    - 10-oh-my-zsh
+    - 10-utility-functions
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: copy zshenv files
+  copy:
+    src: "zshenv.d/{{item}}"
+    dest: /home/{{ archlinux_username}}/.config/zshenv.d/{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+  with_items:
+    - 10-base
+    - 10-firefox
+    - 10-qt
+  become: true
+  become_user: "{{ archlinux_username }}"

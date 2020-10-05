@@ -1,0 +1,8 @@
+---
+- name: install xorg packages
+  pacman:
+    name:
+      - xorg
+      - xorg-xinit
+      - xorg-setxkbmap
+  become: true

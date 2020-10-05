@@ -1,0 +1,49 @@
+---
+- name: add multilib
+  lineinfile:
+    dest: "/etc/pacman.conf"
+    state: "present"
+    line: "[multilib]"
+    regexp: "^\\[multilib\\]"
+    insertafter: "^#\\[multilib\\]"
+
+- name: "add multilib (cont)"
+  lineinfile:
+    dest: "/etc/pacman.conf"
+    state: "present"
+    line: "Include = /etc/pacman.d/mirrorlist"
+    insertafter: "^\\[multilib\\]"
+    regexp: "Include = /etc/pacman.d/mirrorlist"
+
+- name: update pacman cache
+  pacman:
+    update_cache: true
+  become: true
+
+- name: install pacman tools
+  pacman:
+    name: pacman-contrib
+  become: true
+
+- name: install reflector
+  pacman:
+    name: reflector
+  become: true
+
+- name: update pacman mirrorlist
+  script: update-mirrorlist.sh
+  become: true
+
+- name: install base packages
+  pacman:
+    name:
+      - base
+      - base-devel
+      - sudo
+  become: true
+
+- name: perform full upgrade
+  pacman:
+    upgrade: true
+    update_cache: true
+  become: true

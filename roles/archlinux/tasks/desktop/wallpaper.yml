@@ -1,0 +1,15 @@
+---
+- name: install feh
+  pacman:
+    name: feh
+  become: true
+
+- name: template wallpaper script
+  template:
+    src: fehbg
+    dest: /home/{{ archlinux_username }}/.fehbg
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: 0755
+  become: true
+  become_user: "{{ archlinux_username }}"

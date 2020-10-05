@@ -1,0 +1,6 @@
+export EDITOR=vim
+export VISUAL=vim
+export BROWSER=firefox
+
+# Include a local bin directory
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
