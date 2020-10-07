@@ -11,8 +11,8 @@
       prompt: "Enter your system username"
       private: false
     - name: "archlinux_user_real_name"
-      prompt: "Enter your real name"
+      prompt: "Enter your real name (for git user)"
       private: false
     - name: "archlinux_user_email"
-      prompt: "Enter your email address"
+      prompt: "Enter your email address (for git user)"
       private: false

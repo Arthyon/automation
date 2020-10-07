@@ -22,6 +22,13 @@
     group: users
   become: true
 
+- name: install i3-quickterm deps
+  pacman:
+    name:
+      - python
+      - python-pip
+  become: true
+
 - name: install i3 quickterm
   pip:
     name: i3-quickterm

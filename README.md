@@ -8,6 +8,7 @@
 - Add collections: `ansible-galaxy collection install community.general`
 - Run playbook: `ansible-playbook setup.yml`
 - Set password for your user: `passwd <your-user>`
+- Enable login manager: `systemctl enable lxdm`
 - Reboot
 
 Place an image in `/home/{{ archlinux_username }}/.wallpaper` to set background.
