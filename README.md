@@ -1,27 +1,28 @@
 # Setup
 
-- Follow the [installation guide](https://wiki.archlinux.org/index.php/installation_guide) normally
+- Follow the [Arch installation guide](https://wiki.archlinux.org/index.php/installation_guide) normally
   - Recommended packages to pacstrap: `sudo`, `iwd` and `dhcpcd`
 - Reboot and log in as root
 - Add wheel to sudoers using `visudo`
 - Connect to the internet
-  ```
-  systemctl start iwd dhcpcd
-  iwctl
-  [iwctl] device list
-  [iwctl] station <dev> connect <ssid>
+  ```console
+  # systemctl start iwd dhcpcd
+  # iwctl
+  # [iwctl] device list
+  # [iwctl] station <dev> connect <ssid>
   ```
 - Clone repo
 - Install Ansible: `pacman -Syu python ansible`
 - Add plugins: `ansible-galaxy install kewlfft.aur`
 - Add collections: `ansible-galaxy collection install community.general`
 - Run playbook: `ansible-playbook setup.yml`
-- Wait a while
+  - Answer prompts
+  - Wait a while ...
 - Set password for your user: `passwd <your-user>`
 - Enable login manager: `systemctl enable lxdm`
 - Reboot
 
-# Post setup
+# Postinstall
 
 - Place an image in `/home/{{ archlinux_username }}/.wallpaper` to set background.
 

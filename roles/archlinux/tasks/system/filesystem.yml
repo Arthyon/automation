@@ -9,7 +9,7 @@
     state: directory
     owner: root
     group: root
-  when: filesystem == "zfs"
+  when: filesystem.stdout == "zfs"
   become: true
 
 - name: Install zfs snapshot script
@@ -19,7 +19,7 @@
     owner: root
     group: root
     mode: 0755
-  when: filesystem == "zfs"
+  when: filesystem.stdout == "zfs"
   become: true
 
 - name: Install zfs snapshot hook
@@ -28,5 +28,5 @@
     dest: /etc/pacman.d/hooks/10-snapshot.hook
     owner: root
     group: root
-  when: filesystem == "zfs"
+  when: filesystem.stdout == "zfs"
   become: true
