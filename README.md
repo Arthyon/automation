@@ -30,4 +30,9 @@
   Replace `/usr/share/lxdm/themes/Industrial/login.png` to change logo for login manager.
 
 - If using ZFS:
+
   - Update `/usr/local/bin/pacman-snapshots.sh` with your datasets.
+
+- Terminal fonts in VS Code
+  - Set Editor Font in settings to 'Fira Code' and linux terminal to 'termite'.
+  - My xplat dotfiles are in another repo, so this setup does not include VS Code settings
