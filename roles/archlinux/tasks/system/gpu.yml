@@ -10,6 +10,7 @@
     - nvidia
   register: display_controllers
   ignore_errors: true
+  changed_when: false
 
 - name: install mesa (OpenGL implementation)
   pacman:
