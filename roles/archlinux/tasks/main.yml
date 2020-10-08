@@ -7,6 +7,7 @@
 # Setup system
 - import_tasks: system/cpu.yml
 - import_tasks: system/gpu.yml
+- import_tasks: system/filesystem.yml
 - import_tasks: system/zsh.yml
 
 # Set the clock and locale
@@ -39,6 +40,7 @@
 - import_tasks: development/python.yml
 - import_tasks: development/node.yml
 - import_tasks: development/dotnet.yml
+- import_tasks: development/rust.yml
 
 # Install work-specific stuff
 - import_tasks: work/azure.yml

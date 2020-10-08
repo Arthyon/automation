@@ -1,0 +1,5 @@
+---
+- name: install rust
+  pacman:
+    name: rust
+  become: true

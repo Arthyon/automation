@@ -1,0 +1,32 @@
+---
+- name: detect root file system
+  shell: df -hT | awk '/ \/$/ {print $2}'
+  register: filesystem
+
+- name: Add pacman hook directory
+  file:
+    name: /etc/pacman.d/hooks
+    state: directory
+    owner: root
+    group: root
+  when: filesystem == "zfs"
+  become: true
+
+- name: Install zfs snapshot script
+  copy:
+    src: zfs/pacman-snapshots.sh
+    dest: /usr/local/bin/pacman-snapshots.sh
+    owner: root
+    group: root
+    mode: 0755
+  when: filesystem == "zfs"
+  become: true
+
+- name: Install zfs snapshot hook
+  copy:
+    src: zfs/10-snapshot.hook
+    dest: /etc/pacman.d/hooks/10-snapshot.hook
+    owner: root
+    group: root
+  when: filesystem == "zfs"
+  become: true
