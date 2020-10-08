@@ -6,9 +6,29 @@
 
 - name: configure .vimrc
   copy:
-    src: vimrc
+    src: vim/vimrc
     dest: /home/{{ archlinux_username }}/.vimrc
     owner: "{{ archlinux_username }}"
     group: users
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+- name: Create autoload directory
+  file:
+    name: /home/{{ archlinux_username }}/.vim/autoload
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: Download vim plugged
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: /home/{{ archlinux_username }}/.vim/autoload/plug.vim
+    owner: "{{ archlinux_username }}"
+    group: users
+
+- name: Install plugins
+  shell: vim -E -s -c "source /home/{{ archlinux_username }}/.vimrc" +PlugInstall -c qa
   become: true
   become_user: "{{ archlinux_username }}"

@@ -63,7 +63,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;0"
 
 modules-left = i3
 #modules-center = spotify 
-modules-right = volume wlan date language powermenu
+modules-right = pulseaudio wlan date language powermenu
 
 tray-position = center
 tray-padding = 5
@@ -259,5 +259,14 @@ menu-2-0 = power off
 menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = true
+interval = 5
+label-muted = 
+label-volume = %percentage%% 
+
+
 
 ; vim:ft=dosini
