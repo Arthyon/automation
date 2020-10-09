@@ -2,6 +2,7 @@
 - name: detect root file system
   shell: df -hT | awk '/ \/$/ {print $2}'
   register: filesystem
+  changed_when: false
 
 - name: Add pacman hook directory
   file:
