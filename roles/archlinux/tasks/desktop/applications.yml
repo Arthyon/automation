@@ -46,8 +46,6 @@
       - visual-studio-code-bin
       - yay
       - dropbox
-      - slack-desktop
-      - teams
       # - spotify # GPG key has expired
     state: present
   become: true
