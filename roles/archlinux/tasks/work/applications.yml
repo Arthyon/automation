@@ -1,9 +1,11 @@
 ---
-- name: install work applications
+- name: install work applications from aur
   aur:
     name:
       - postman-bin
       - jetbrains-toolbox
+      - slack-desktop
+      - teams
     state: present
   become: true
   become_user: aur_builder
@@ -16,3 +18,10 @@
     group: users
   become: true
   become_user: "{{ archlinux_username }}"
+
+# Ref: https://docs.microsoft.com/en-us/answers/questions/42095/sharing-screen-not-working-anymore-bug.html
+- name: Fix screen sharing bug in teams when using i3
+  command: mv "{{ item.stat.path }}" "{{ item.stat.path }}.bak"
+  with_items:
+    - "/usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay"
+  when: item.stat.exists == true

@@ -19,7 +19,6 @@
   - Answer prompts
   - Wait a while ...
 - Set password for your user: `passwd <your-user>`
-- Enable login manager: `systemctl enable lxdm`
 - Reboot
 
 # Postinstall

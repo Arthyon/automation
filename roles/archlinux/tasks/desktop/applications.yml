@@ -17,6 +17,7 @@
       - keepassxc
       - thunderbird
       - steam
+      - ranger
   become: true
 
 - name: import gpg keys for AUR packages

@@ -19,3 +19,9 @@
     owner: root
     group: root
   become: true
+
+- name: start lxdm service
+  systemd:
+    name: lxdm
+    enabled: true
+  become: yes
