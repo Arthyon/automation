@@ -25,3 +25,13 @@
   with_items:
     - "/usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay"
   when: item.stat.exists == true
+
+- name: Install work VSCode extensions
+  import_role: 
+    name: gantsign.visual-studio-code-extensions
+  vars:
+    user:
+      - username: "{{ archlinux_username }}"
+        visual_studio_code_extensions:
+          - arjun.swagger-viewer
+          - randomchance.logstash

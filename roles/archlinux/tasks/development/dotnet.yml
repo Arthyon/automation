@@ -15,3 +15,13 @@
     group: users
   become: true
   become_user: "{{ archlinux_username }}"
+
+- name: Install dotnet VSCode extensions
+  import_role: 
+    name: gantsign.visual-studio-code-extensions
+  vars:
+    user:
+      - username: "{{ archlinux_username }}"
+        visual_studio_code_extensions:
+          - ms-dotnettools.csharp
+          - jchannon.csharpextensions

@@ -62,3 +62,17 @@
     marker: "# {mark} Media keys specific to spotify"
   become: yes
   become_user: "{{ archlinux_username }}"
+
+- name: Install VSCode extensions
+  import_role: 
+    name: gantsign.visual-studio-code-extensions
+  vars:
+    user:
+      - username: "{{ archlinux_username }}"
+        visual_studio_code_extensions:
+          - vscodevim.vim
+          - vscode-icons-team.vscode-icons
+          - editorconfig.editorconfig
+          - mechatroner.rainbow-csv
+          - espenb.prettier-vscode
+          - hbenl.vscode-text-explorer
