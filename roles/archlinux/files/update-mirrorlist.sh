@@ -5,7 +5,7 @@ if find $mirrorlist -mtime +1 | grep -q '.'; then
     echo "Updating $mirrorlist..."
     if ! reflector \
         --protocol https \
-        --country "United States" \
+        --country "Norway" \
         --latest 32 \
         --sort rate \
         --save $mirrorlist; then
