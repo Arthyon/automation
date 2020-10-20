@@ -10,5 +10,15 @@
           - vscode-icons-team.vscode-icons
           - editorconfig.editorconfig
           - mechatroner.rainbow-csv
-          - espenb.prettier-vscode
+          - esbenp.prettier-vscode
           - hbenl.vscode-text-explorer
+          - ms-dotnettools.csharp
+          - jchannon.csharpextensions
+          - rtbenfield.vscode-jest-test-adapter
+          - rust-lang.rust
+          - arjun.swagger-viewer
+          - randomchance.logstash
+          - ms-vscode.azure-account
+          - summer.azure-event-hub-explorer
+          - ms-azuretools.vscode-azurefunctions
+          - ms-azure-devops.azure-pipelines
