@@ -147,7 +147,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id picom -b
 
 # Start dunst
-exec --no-startup-id /usr/bind/dunst
+exec --no-startup-id /usr/bin/dunst
 
 # Borders
 new_window pixel 2
