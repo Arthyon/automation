@@ -21,12 +21,3 @@
     owner: "{{ archlinux_username }}"
     group: users
   become: true
-
-- name: Start dunst on login
-  blockinfile:
-    path: "/home/{{ archlinux_username }}/.config/i3/config"
-    block: |
-      exec --no-startup-id /usr/bin/dunst
-    marker: "# {mark} Notification daemon"
-  become: yes
-  become_user: "{{ archlinux_username }}"
