@@ -26,5 +26,5 @@
   register: overlay
 
 - name: Fix screen sharing bug in teams when using i3
-  command: mv "{{ overlay.stat.path }}" "{{ item.stat.path }}.bak"
+  command: mv "{{ overlay.stat.path }}" "{{ overlay.stat.path }}.bak"
   when: overlay.stat.exists == true
