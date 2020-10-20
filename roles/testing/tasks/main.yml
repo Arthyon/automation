@@ -1,6 +1,6 @@
 ---
 - name: Install VSCode extensions
-  import_role:
+  include_role:
     name: gantsign.visual-studio-code-extensions
   vars:
     user:
