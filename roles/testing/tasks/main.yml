@@ -1,9 +1,24 @@
 ---
-- name: Check that bugged screen sharing overlay exists
-  stat:
-    path: /usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay
-  register: overlay
-
-- name: Fix screen sharing bug in teams when using i3
-  command: mv "{{ overlay.stat.path }}" "{{ overlay.stat.path }}.bak"
-  when: overlay.stat.exists == true
+- name: Install VSCode extensions
+  include_role:
+    name: gantsign.visual-studio-code-extensions
+  vars:
+    users:
+      - username: "{{ archlinux_username }}"
+        visual_studio_code_extensions:
+          - vscodevim.vim
+          - vscode-icons-team.vscode-icons
+          - editorconfig.editorconfig
+          - mechatroner.rainbow-csv
+          - esbenp.prettier-vscode
+          - hbenl.vscode-test-explorer
+          - ms-dotnettools.csharp
+          - jchannon.csharpextensions
+          - kavod-io.vscode-jest-test-adapter
+          - rust-lang.rust
+          - arjun.swagger-viewer
+          - randomchance.logstash
+          - ms-vscode.azure-account
+          - summer.azure-event-hub-explorer
+          - ms-azuretools.vscode-azurefunctions
+          - ms-azure-devops.azure-pipelines
