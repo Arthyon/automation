@@ -13,7 +13,7 @@
   ```
 - Clone repo
 - Install Ansible: `pacman -Syu python ansible`
-- Add plugins: `ansible-galaxy install kewlfft.aur`
+- Add plugins: `ansible-galaxy install kewlfft.aur gantsign.visual-studio-code-extensions`
 - Add collections: `ansible-galaxy collection install community.general`
 - Run playbook: `ansible-playbook setup.yml`
   - Answer prompts
