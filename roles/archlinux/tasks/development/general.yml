@@ -1,0 +1,13 @@
+---
+- name: install docker
+  pacman:
+    name: docker
+  become: true
+
+- name: add user to docker group
+  user:
+    name: "{{ archlinux_username }}"
+    groups:
+      - docker
+    append: true
+  become: true
