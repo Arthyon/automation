@@ -20,8 +20,11 @@
   become_user: "{{ archlinux_username }}"
 
 # Ref: https://docs.microsoft.com/en-us/answers/questions/42095/sharing-screen-not-working-anymore-bug.html
+- name: Check that bugged screen sharing overlay exists
+  stat:
+    path: /usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay
+  register: overlay
+
 - name: Fix screen sharing bug in teams when using i3
-  command: mv "{{ item.stat.path }}" "{{ item.stat.path }}.bak"
-  with_items:
-    - "/usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay"
-  when: item.stat.exists == true
+  command: mv "{{ overlay.stat.path }}" "{{ overlay.stat.path }}.bak"
+  when: overlay.stat.exists == true
