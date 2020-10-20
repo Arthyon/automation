@@ -64,15 +64,15 @@
   become_user: "{{ archlinux_username }}"
 
 - name: Install VSCode extensions
-  import_role: 
+  import_role:
     name: gantsign.visual-studio-code-extensions
   vars:
-    user:
+    users:
       - username: "{{ archlinux_username }}"
         visual_studio_code_extensions:
           - vscodevim.vim
           - vscode-icons-team.vscode-icons
           - editorconfig.editorconfig
           - mechatroner.rainbow-csv
-          - espenb.prettier-vscode
-          - hbenl.vscode-text-explorer
+          - esbenp.prettier-vscode
+          - hbenl.vscode-test-explorer

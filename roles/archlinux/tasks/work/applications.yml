@@ -33,7 +33,7 @@
   import_role:
     name: gantsign.visual-studio-code-extensions
   vars:
-    user:
+    users:
       - username: "{{ archlinux_username }}"
         visual_studio_code_extensions:
           - arjun.swagger-viewer

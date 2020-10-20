@@ -11,10 +11,10 @@
           - editorconfig.editorconfig
           - mechatroner.rainbow-csv
           - esbenp.prettier-vscode
-          - hbenl.vscode-text-explorer
+          - hbenl.vscode-test-explorer
           - ms-dotnettools.csharp
           - jchannon.csharpextensions
-          - rtbenfield.vscode-jest-test-adapter
+          - kavod-io.vscode-jest-test-adapter
           - rust-lang.rust
           - arjun.swagger-viewer
           - randomchance.logstash

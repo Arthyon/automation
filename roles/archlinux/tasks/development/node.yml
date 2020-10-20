@@ -32,10 +32,10 @@
   become_user: "{{ archlinux_username }}"
 
 - name: Install javascript VSCode extensions
-  import_role: 
+  import_role:
     name: gantsign.visual-studio-code-extensions
   vars:
-    user:
+    users:
       - username: "{{ archlinux_username }}"
         visual_studio_code_extensions:
-          - rtbenfield.vscode-jest-test-adapter
+          - kavod-io.vscode-jest-test-adapter
