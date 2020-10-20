@@ -14,15 +14,16 @@
 - import_tasks: locale/time.yml
 - import_tasks: locale/locale.yml
 
+# Set up aur user
+- import_tasks: aur-setup/create-aur-user.yml
+
 # Configure a user
 - import_tasks: user/user.yml
 - import_tasks: user/openssh.yml
 - import_tasks: user/zsh-user-setup.yml
 - import_tasks: user/manpages.yml
 - import_tasks: user/git.yml
-
-# Set up aur user
-- import_tasks: aur-setup/create-aur-user.yml
+- import_tasks: user/informant.yml
 
 # Install the desktop
 - import_tasks: desktop/vim.yml
