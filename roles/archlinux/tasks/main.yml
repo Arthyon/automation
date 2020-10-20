@@ -17,13 +17,15 @@
 # Set up aur user
 - import_tasks: aur-setup/create-aur-user.yml
 
+# Remove informant (will break automatic pacman if installed)
+- import_tasks: user/remove-informant.yml
+
 # Configure a user
 - import_tasks: user/user.yml
 - import_tasks: user/openssh.yml
 - import_tasks: user/zsh-user-setup.yml
 - import_tasks: user/manpages.yml
 - import_tasks: user/git.yml
-- import_tasks: user/informant.yml
 
 # Install the desktop
 - import_tasks: desktop/vim.yml
@@ -52,6 +54,9 @@
 
 # Set up login manager
 - import_tasks: login-manager/lxdm.yml
+
+# Install informant (will break automatic pacman if installed earlier)
+- import_tasks: user/add-informant.yml
 
 # Cleanup
 - import_tasks: aur-setup/remove-aur-user.yml
