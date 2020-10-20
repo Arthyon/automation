@@ -143,6 +143,9 @@ bindsym $mod+r mode "resize"
 # Start status bars
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Start Picom
+exec --no-startup-id picom -b
+
 # Borders
 new_window pixel 2
 
@@ -171,3 +174,7 @@ font pango: NotoSans-Regular 10
 # Dropdown terminal (i3-quickterm)
 bindsym $mod+grave exec i3-quickterm shell
 bindsym $mod+oslash exec i3-quickterm shell
+
+# Screenshots
+bindsym --release Print exec "scrot -s ~/Pictures/screenshot-%b%d-%H%M%S.png"
+bindsym --release Shift+Print exec "scrot -se 'mv $f /tmp/$n && xclip -selection clipboard -t image/png -i /tmp/$n'"

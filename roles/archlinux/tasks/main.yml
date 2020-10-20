@@ -31,6 +31,8 @@
 - import_tasks: desktop/audio.yml
 - import_tasks: desktop/i3.yml
 - import_tasks: desktop/rofi.yml
+- import_tasks: desktop/notifications.yml
+- import_tasks: desktop/picom.yml
 - import_tasks: desktop/polybar.yml
 - import_tasks: desktop/wallpaper.yml
 - import_tasks: desktop/termite.yml
