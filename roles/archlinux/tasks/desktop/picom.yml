@@ -1,0 +1,21 @@
+---
+- name: install picom
+  pacman:
+    name: picom
+  become: true
+
+- name: create picom configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/picom
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: configure picom
+  copy:
+    src: picom.conf
+    dest: /home/{{ archlinux_username }}/.config/picom/picom.conf
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true

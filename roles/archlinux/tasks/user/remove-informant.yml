@@ -3,3 +3,4 @@
   pacman:
     name: informant
     state: absent
+  changed_when: false
