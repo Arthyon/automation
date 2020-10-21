@@ -29,6 +29,15 @@
   command: mv "{{ overlay.stat.path }}" "{{ overlay.stat.path }}.bak"
   when: overlay.stat.exists == true
 
+- name: Make Teams-notifications floating
+  blockinfile:
+    path: "/home/{{ archlinux_username }}/.config/i3/config"
+    block: |
+      for_window [title="Microsoft Teams Notification"] floating enable
+    marker: "# {mark} Teams"
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
 - name: Install work VSCode extensions
   import_role:
     name: gantsign.visual-studio-code-extensions
