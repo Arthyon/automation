@@ -381,6 +381,11 @@
 #    msg_urgency = critical
 #    fullscreen = show
 
+# This notification will not be displayed
+[ignore]
+    appname = Spotify
+    format = ""
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
