@@ -1,4 +1,7 @@
 ---
+# Remove informant (will break automatic pacman if installed)
+- import_tasks: user/remove-informant.yml
+
 # Install bare necessities
 - import_tasks: core/pacman.yml
 - import_tasks: core/firmware.yml
@@ -16,9 +19,6 @@
 
 # Set up aur user
 - import_tasks: aur-setup/create-aur-user.yml
-
-# Remove informant (will break automatic pacman if installed)
-- import_tasks: user/remove-informant.yml
 
 # Configure a user
 - import_tasks: user/user.yml
