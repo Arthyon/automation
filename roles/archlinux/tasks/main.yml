@@ -12,6 +12,7 @@
 - import_tasks: system/gpu.yml
 - import_tasks: system/filesystem.yml
 - import_tasks: system/zsh.yml
+- import_tasks: system/automount.yml
 
 # Set the clock and locale
 - import_tasks: locale/time.yml

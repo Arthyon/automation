@@ -1,0 +1,8 @@
+---
+- name: install udisks and polkit
+  pacman:
+    name:
+      - udisks2
+      - polkit
+      - udiskie
+  become: true
