@@ -42,6 +42,7 @@
 - import_tasks: desktop/applications.yml
 
 # Install some programming languages
+- import_tasks: development/general.yml
 - import_tasks: development/python.yml
 - import_tasks: development/node.yml
 - import_tasks: development/dotnet.yml
