@@ -1,0 +1,14 @@
+---
+- name: install nemo
+  pacman:
+    name: nemo
+  become: true
+
+- name: configure nemo
+  shell: |
+    xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+    gsettings set org.nemo.desktop show-desktop-icons false
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec termite
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
+  become: yes
+  become_user: "{{ archlinux_username }}"
