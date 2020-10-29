@@ -6,4 +6,6 @@
     gsettings set org.cinnamon.desktop.default-applications.terminal exec termite
     gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
   become: yes
+  become_method: su
   become_user: "{{ archlinux_username }}"
+  become_flags: "-s /usr/bin/zsh"
