@@ -1,11 +1,8 @@
 ---
 - name: configure nemo
-  shell: |
-    xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
-    gsettings set org.nemo.desktop show-desktop-icons false
-    gsettings set org.cinnamon.desktop.default-applications.terminal exec termite
-    gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
+  community.general.dconf:
+    key: "/org/nemo/desktop/show-desktop-icons"
+    value: "false"
+    state: present
   become: yes
-  become_method: su
   become_user: "{{ archlinux_username }}"
-  become_flags: "-s /usr/bin/zsh"
