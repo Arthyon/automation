@@ -1,0 +1,6 @@
+---
+- name: start paccache job
+  systemd:
+    name: paccache.timer
+    enabled: true
+  become: yes
