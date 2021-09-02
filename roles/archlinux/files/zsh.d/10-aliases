@@ -7,3 +7,6 @@ alias xclip="xclip -se c"
 alias ..='cd ..'
 # Calendar week starts at monday
 alias cal="cal -m"
+
+# Make terminal follow ranger path
+alias ranger="source ranger"
