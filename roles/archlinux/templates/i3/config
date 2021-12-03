@@ -3,7 +3,7 @@ set $mod Mod1
 
 # Set sizes for floating windows
 floating_minimum_size 75 x 50
-floating_maximum_size 640 x 480
+#floating_maximum_size 640 x 480
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -28,7 +28,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
+bindsym $mod+KP_Enter exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -161,7 +162,7 @@ bindsym $ms+1 exec setxkbmap us
 bindsym $ms+2 exec setxkbmap no
 
 # Lockscreen
-bindsym $ms+l exec lock -g -- scrot -zq 25
+bindsym $ms+l exec i3lock --color=545454
 
 # wallpaper
 exec /usr/bin/sh /home/{{ archlinux_username }}/.fehbg &
@@ -180,4 +181,4 @@ bindsym $mod+oslash exec i3-quickterm shell
 
 # Screenshots
 bindsym --release Print exec "scrot -s ~/Pictures/screenshot-%b%d-%H%M%S.png"
-bindsym --release Shift+Print exec "scrot -se 'mv $f /tmp/$n && xclip -selection clipboard -t image/png -i /tmp/$n'"
+bindsym --release Shift+Print exec "scrot -s --exec 'mv $f /tmp/$n && xclip -selection clipboard -t image/png -i /tmp/$n'"

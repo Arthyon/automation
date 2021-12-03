@@ -52,6 +52,6 @@
 - name: do not require pwd to shutdown via cli
   lineinfile:
     path: /etc/sudoers.d/12-no-pwd-for-power
-    line: "{{ archlinux_username }} {{ archlinux_hostname }} =NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot"
+    line: "{{ archlinux_username }} ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot"
     create: yes
     validate: "visudo -cf %s"

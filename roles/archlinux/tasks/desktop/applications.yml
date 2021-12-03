@@ -46,7 +46,7 @@
       - visual-studio-code-bin
       - yay
       - dropbox
-      # - spotify # GPG key has expired
+      - spotify
     state: present
   become: true
   become_user: aur_builder

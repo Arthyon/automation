@@ -1,0 +1,21 @@
+---
+- name: install alacritty
+  pacman:
+    name: termite
+  become: true
+
+- name: create alacritty configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/alacritty
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: configure alacritty
+  copy:
+    src: alacritty/alacritty.yml
+    dest: /home/{{ archlinux_username }}/.config/alacritty/alacritty.yml
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true

@@ -5,6 +5,6 @@ configuration {
 	display-window: "";
 	display-drun: "";
 	display-combi: "";
-    theme: "customtheme"
 }
+@theme "customtheme"
 /* vim:ft=css
