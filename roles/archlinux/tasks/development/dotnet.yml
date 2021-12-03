@@ -16,6 +16,14 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
+- name: install jetbrains toolbox
+  aur:
+    name:
+      - jetbrains-toolbox
+    state: present
+  become: true
+  become_user: aur_builder
+
 - name: Install dotnet VSCode extensions
   import_role:
     name: gantsign.visual-studio-code-extensions

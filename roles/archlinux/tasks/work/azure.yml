@@ -25,6 +25,16 @@
   become: yes
   become_user: "{{ archlinux_username }}"
 
+- name: Readd rsa support to openssh
+  blockinfile:
+    path: "/home/{{ archlinux_username }}/.ssh/config"
+    block: |
+      # Workaround for Azure DevOps, which ONLY supports rsa. This is not safe
+      PubkeyAcceptedKeyTypes +ssh-rsa
+    marker: "# {mark} Config for using SSH with Azure DevOps"
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
 - name: Install Azure VSCode extensions
   import_role:
     name: gantsign.visual-studio-code-extensions

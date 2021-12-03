@@ -39,7 +39,7 @@
 - import_tasks: desktop/picom.yml
 - import_tasks: desktop/polybar.yml
 - import_tasks: desktop/wallpaper.yml
-- import_tasks: desktop/termite.yml
+- import_tasks: desktop/terminal.yml
 - import_tasks: desktop/applications.yml
 
 # Install some programming languages
