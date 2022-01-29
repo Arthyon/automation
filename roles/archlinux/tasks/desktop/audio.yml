@@ -4,8 +4,11 @@
     name:
       - alsa-firmware
       - alsa-utils
-      - paprefs
       - pavucontrol
-      - pulseaudio
-      - pulseaudio-alsa
+      - pipewire
+      - pipewire-alsa
+      - pipewire-pulse
+      - pipewire-jack
+      - helvum
+      - easyeffects
   become: true
