@@ -32,6 +32,12 @@
 
   - Update `/usr/local/bin/pacman-snapshots.sh` with your datasets.
 
+- Set default audio sink/source:
+
+  - `pactl list short [sinks|sources]`
+  - `pactl set-default-sink <my sink>`
+  - `pactl set-default-source <my source>`
+
 - Terminal fonts in VS Code
   - Set Editor Font in settings to 'Fira Code' and linux terminal to 'termite'.
   - My xplat dotfiles are in another repo, so this setup does not include VS Code settings
