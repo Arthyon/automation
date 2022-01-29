@@ -1,0 +1,8 @@
+---
+- name: install timeshift
+  aur:
+    name: timeshift
+    state: present
+  become: true
+  become_user: aur_builder
+  changed_when: false
