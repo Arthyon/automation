@@ -27,6 +27,7 @@
 - import_tasks: user/zsh-user-setup.yml
 - import_tasks: user/manpages.yml
 - import_tasks: user/git.yml
+- import_tasks: user/backup.yml
 
 # Install the desktop
 - import_tasks: desktop/vim.yml
