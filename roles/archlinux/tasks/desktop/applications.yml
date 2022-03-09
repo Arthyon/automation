@@ -21,6 +21,15 @@
       - ranger
   become: true
 
+- name: copy application configurations
+  copy:
+    src: ranger/rc.conf
+    dest: /home/{{ archlinux_username }}/.config/ranger/rc.conf
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+  become_user: "{{ archlinux_username }}"
+
 - name: import gpg keys for AUR packages
   become: yes
   become_user: "{{ archlinux_username }}"
