@@ -21,7 +21,7 @@
       - ranger
   become: true
 
-- name: copy application configurations
+- name: copy ranger configuration
   copy:
     src: ranger/rc.conf
     dest: /home/{{ archlinux_username }}/.config/ranger/rc.conf
