@@ -38,6 +38,10 @@
   - `pactl set-default-sink <my sink>`
   - `pactl set-default-source <my source>`
 
+- Set scheduler based on drive
+
+  - https://wiki.archlinux.org/title/Improving_performance#Changing_I/O_scheduler
+
 - Terminal fonts in VS Code
   - Set Editor Font in settings to 'Fira Code' and linux terminal to 'termite'.
   - My xplat dotfiles are in another repo, so this setup does not include VS Code settings
