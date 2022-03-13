@@ -1,6 +1,6 @@
 ---
 - name: install work applications from aur
-  aur:
+  kewlfft.aur.aur:
     name:
       - postman-bin
       - jetbrains-toolbox

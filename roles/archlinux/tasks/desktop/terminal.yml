@@ -1,7 +1,7 @@
 ---
 - name: install alacritty
   pacman:
-    name: termite
+    name: alacritty
   become: true
 
 - name: create alacritty configuration directory

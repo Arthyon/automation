@@ -1,0 +1,6 @@
+roles:
+- gantsign.visual-studio-code-extensions
+
+collections:
+- kewlfft.aur 
+- community.general

@@ -1,6 +1,6 @@
 ---
 - name: install timeshift
-  aur:
+  kewlfft.aur.aur:
     name: timeshift
     state: present
   become: true

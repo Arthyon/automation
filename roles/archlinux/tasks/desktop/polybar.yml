@@ -1,5 +1,5 @@
 - name: install polybar
-  aur:
+  kewlfft.aur.aur:
     name: polybar
     state: present
   become: true
