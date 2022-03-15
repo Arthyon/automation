@@ -6,3 +6,9 @@
   become: true
   become_user: aur_builder
   changed_when: false
+
+- name: start cronie service
+  systemd:
+    name: cronie
+    enabled: true
+  become: yes

@@ -61,9 +61,8 @@ font-1 = unifont:size=6:heavy;-2
 font-2 = "Font Awesome 6 Brands:style=Regular:pixelsize=10;2"
 font-3 = "Font Awesome 6 Free:style=Solid:pixelsize=10;2"
 
-modules-left = i3
-#modules-center = spotify 
-modules-right = pulseaudio wlan date language powermenu
+modules-left = i3 spotify
+modules-right = pulseaudio wlan battery date language powermenu
 
 tray-position = center
 tray-padding = 5
@@ -155,7 +154,7 @@ bar-used-empty-foreground = ${colors.grey}
 
 [module/wlan]
 type = internal/network
-interface = wlp5s0
+interface = wlan0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -268,6 +267,17 @@ interval = 5
 label-muted = 
 label-volume = %percentage%% 
 
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 100
+
+poll-interval = 5
+
+label-full =  %percentage%%
+label-discharging =  %percentage%% %consumption%w
+label-charging =  %percentage%%  %consumption%w
 
 
 ; vim:ft=dosini
