@@ -39,7 +39,6 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
-# this does not work
 - name: import gpg keys for AUR packages
   become: yes
   become_user: "{{ archlinux_username }}"
@@ -47,7 +46,7 @@
     cmd: curl {{ item }} | gpg --import -
     warn: false
   with_items:
-    - https://download.spotify.com/debian/pubkey.gpg
+    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg 
 
 - name: import gpg keys for AUR packages for build user
   become: yes
