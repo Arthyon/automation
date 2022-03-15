@@ -1,0 +1,8 @@
+---
+- name: install keyring applications
+  pacman:
+    name:
+      - gnome-keyring
+      - libsecret
+      - seahorse
+  become: true
