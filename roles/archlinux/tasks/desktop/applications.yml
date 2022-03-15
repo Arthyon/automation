@@ -19,6 +19,7 @@
       - thunderbird
       - steam
       - ranger
+      - nemo
   become: true
 
 - name: create ranger configuration directory

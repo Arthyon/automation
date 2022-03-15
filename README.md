@@ -43,7 +43,7 @@
 
 - Terminal fonts in VS Code
 
-  - Set Editor Font in settings to 'Fira Code' and linux terminal to 'termite'.
+  - Set Editor Font in settings to 'Fira Code' and linux terminal to 'alacritty'.
   - My xplat dotfiles are in another repo, so this setup does not include VS Code settings
 
 - run `run_jottad` to set up jotta cli

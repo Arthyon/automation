@@ -11,11 +11,14 @@
     group: users
   become: true
 
-- name: configure rofi
+- name: copy rofi configuration files
   copy:
-    src: rofi/config.rasi
-    dest: /home/{{ archlinux_username }}/.config/rofi/config.rasi
+    src: "rofi/{{item}}"
+    dest: /home/{{ archlinux_username}}/.config/rofi/{{item}}
     owner: "{{ archlinux_username }}"
     group: users
+  with_items:
+    - config.rasi
+    - customtheme.rasi
   become: true
-
+  become_user: "{{ archlinux_username }}"
