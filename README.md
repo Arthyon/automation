@@ -37,7 +37,7 @@
   - `pactl set-default-sink <my sink>`
   - `pactl set-default-source <my source>`
 
-- Set scheduler based on drive
+- Set scheduler based on drive type
 
   - https://wiki.archlinux.org/title/Improving_performance#Changing_I/O_scheduler
 
@@ -46,5 +46,7 @@
   - Set Editor Font in settings to 'Fira Code' and linux terminal to 'alacritty'.
   - My xplat dotfiles are in another repo, so this setup does not include VS Code settings
 
-- run `run_jottad` to set up jotta cli
-- set up timeshift
+- Run `run_jottad` to set up jotta cli
+- Set up timeshift (`sudo timeshift-gtk` for easy setup)
+- If polybar wlan indicator does not work, replace interface name in polybar wlan module with your interface name
+- On desktops: Remove polybar battery module from the bars
