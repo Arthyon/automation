@@ -1,5 +1,5 @@
 - name: install nvm
-  aur:
+  kewlfft.aur.aur:
     name:
       - nvm
     state: present

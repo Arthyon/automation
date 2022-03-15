@@ -28,7 +28,7 @@
   become: true
 
 - name: install aur gui themes
-  aur:
+  kewlfft.aur.aur:
     name:
       - vertex-themes
       - paper-icon-theme

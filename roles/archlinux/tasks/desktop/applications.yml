@@ -19,6 +19,7 @@
       - thunderbird
       - steam
       - ranger
+      - nemo
   become: true
 
 - name: create ranger configuration directory
@@ -45,8 +46,7 @@
     cmd: curl {{ item }} | gpg --import -
     warn: false
   with_items:
-    - https://download.spotify.com/debian/pubkey.gpg
-    - https://linux.dropbox.com/fedora/rpm-public-key.asc
+    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg 
 
 - name: import gpg keys for AUR packages for build user
   become: yes
@@ -56,15 +56,15 @@
     warn: false
   with_items:
     - https://download.spotify.com/debian/pubkey.gpg
-    - https://linux.dropbox.com/fedora/rpm-public-key.asc
+#
 
 - name: install from aur
-  aur:
+  kewlfft.aur.aur:
     name:
       - visual-studio-code-bin
       - yay
-      - dropbox
       - spotify
+      - jotta-cli
     state: present
   become: true
   become_user: aur_builder

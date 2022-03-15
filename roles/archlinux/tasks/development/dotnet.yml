@@ -17,7 +17,7 @@
   become_user: "{{ archlinux_username }}"
 
 - name: install jetbrains toolbox
-  aur:
+  kewlfft.aur.aur:
     name:
       - jetbrains-toolbox
     state: present

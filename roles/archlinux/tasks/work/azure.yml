@@ -10,7 +10,7 @@
     PATH: "/home/{{ archlinux_username }}/.nvm/versions/node/v{{ archlinux_node_version }}/bin:{{ ansible_env.PATH }}"
 
 - name: install azure tools (AUR)
-  aur:
+  kewlfft.aur.aur:
     name:
       - azure-functions-core-tools-bin
       - azure-cli

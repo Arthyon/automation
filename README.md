@@ -13,8 +13,7 @@
   ```
 - Clone repo
 - Install Ansible: `pacman -Syu python ansible`
-- Add plugins: `ansible-galaxy install kewlfft.aur gantsign.visual-studio-code-extensions`
-- Add collections: `ansible-galaxy collection install community.general`
+- Add requirements: `ansible-galaxy install -r requirements.yml`
 - Run playbook: `ansible-playbook setup.yml`
   - Answer prompts
   - Wait a while ...
@@ -43,5 +42,9 @@
   - https://wiki.archlinux.org/title/Improving_performance#Changing_I/O_scheduler
 
 - Terminal fonts in VS Code
-  - Set Editor Font in settings to 'Fira Code' and linux terminal to 'termite'.
+
+  - Set Editor Font in settings to 'Fira Code' and linux terminal to 'alacritty'.
   - My xplat dotfiles are in another repo, so this setup does not include VS Code settings
+
+- run `run_jottad` to set up jotta cli
+- set up timeshift

@@ -1,6 +1,6 @@
 ---
 - name: install informant
-  aur:
+  kewlfft.aur.aur:
     name: informant
     state: present
   become: true
