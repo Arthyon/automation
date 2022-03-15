@@ -28,8 +28,10 @@
 - import_tasks: user/manpages.yml
 - import_tasks: user/git.yml
 - import_tasks: user/backup.yml
+- import_tasks: user/syncthing.yml
 
 # Install the desktop
+- import_tasks: desktop/keyring.yml
 - import_tasks: desktop/vim.yml
 - import_tasks: desktop/gui.yml
 - import_tasks: desktop/xorg.yml
