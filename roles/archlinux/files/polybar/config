@@ -55,6 +55,7 @@ padding-left = 0
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
+separator = "|"
 
 font-0 = FuraMono-Regular:size=10;3
 font-1 = unifont:size=6:heavy;-2
