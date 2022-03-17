@@ -10,3 +10,6 @@ alias cal="cal -m"
 
 # Make terminal follow ranger path
 alias ranger="source ranger"
+
+# Colorize grep output
+alias grep='grep --color=auto'

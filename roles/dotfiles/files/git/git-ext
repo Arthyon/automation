@@ -1,0 +1,29 @@
+#!/bin/sh
+
+command=$1
+# test -z "$command" && echo "ERROR: Please provide a command" 1>&2 && exit 1
+test -z "$command" && command=help
+case $command in
+	cleanup)
+		git fetch -p
+		git branch -vv | awk '/: gone/ {print $1}' | xargs git branch -d
+		;;
+	update)
+		currentBranch="$(git symbolic-ref --short HEAD)"
+		defaultBranch="$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')"
+		if [ "$currentBranch" == "$defaultBranch" ]; then
+			echo "Already on default branch"
+			exit 1
+		fi
+		git checkout $defaultBranch && git pull && git checkout $currentBranch && git merge $defaultBranch
+		;;
+	help)
+		echo "List of commands:"
+		echo "- update"
+		echo "- cleanup"
+		;;
+	*)
+		echo "$command is not a valid command"
+		echo "Use 'help' to get a list of available commands"
+		;;
+esac
