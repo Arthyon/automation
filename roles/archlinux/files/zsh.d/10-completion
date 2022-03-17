@@ -10,3 +10,5 @@ zstyle :compinstall filename '$HOME/.config/zsh/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+autoload -U +X bashcompinit && bashcompinit

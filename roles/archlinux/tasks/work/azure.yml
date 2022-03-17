@@ -46,3 +46,12 @@
           - summer.azure-event-hub-explorer
           - ms-azuretools.vscode-azurefunctions
           - ms-azure-devops.azure-pipelines
+
+
+- name: copy az cli autocompletion file
+  copy:
+    src: "zsh_completion.d/az.completion"
+    dest: /home/{{ archlinux_username}}/.config/zsh_completion.d/az.completion"
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
