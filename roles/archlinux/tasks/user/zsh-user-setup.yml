@@ -20,6 +20,14 @@
     group: users
   become: true
 
+- name: create zsh completion directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/zsh_completion.d
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
 - name: copy zshrc files
   copy:
     src: "zsh.d/{{item}}"
