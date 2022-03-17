@@ -1,5 +1,0 @@
----
-- name: remove informant
-  pacman:
-    name: informant
-    state: absent

@@ -24,7 +24,7 @@
 
 - Place an image in `/home/{{ archlinux_username }}/.wallpaper` to set background.
 
-- Edit `bg`-property in `/etc/lxdm/lxdm.conf` to set background for login manager.
+- Edit `bg`-property in `/etc/lxdm/lxdm.conf` to set background for login manager. Make sure this is placed somewhere like `/usr/share/lxdm/backgrounds/` to enable the login process to access the file.
   Replace `/usr/share/lxdm/themes/Industrial/login.png` to change logo for login manager.
 
 - If using ZFS:
@@ -41,12 +41,11 @@
 
   - https://wiki.archlinux.org/title/Improving_performance#Changing_I/O_scheduler
 
-- Terminal fonts in VS Code
-
-  - Set Editor Font in settings to 'Fira Code' and linux terminal to 'alacritty'.
-  - My xplat dotfiles are in another repo, so this setup does not include VS Code settings
-
 - Run `run_jottad` to set up jotta cli
 - Set up timeshift (`sudo timeshift-gtk` for easy setup)
 - If polybar wlan indicator does not work, replace interface name in polybar wlan module with your interface name
 - On desktops: Remove polybar battery module from the bars
+
+# dotfiles
+
+- After logging in as your user, run `ansible-playbook setup-dotfiles.yml` for other config.

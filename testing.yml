@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  connection: local
-  roles:
-    - testing
-  vars_prompt:
-    - name: "archlinux_username"
-      prompt: "Enter your system username"
-      private: false
