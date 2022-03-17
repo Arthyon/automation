@@ -32,6 +32,7 @@
     - 10-history
     - 10-oh-my-zsh
     - 10-utility-functions
+    - 10-vim
   become: true
   become_user: "{{ archlinux_username }}"
 
