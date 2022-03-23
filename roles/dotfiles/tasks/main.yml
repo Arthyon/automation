@@ -3,3 +3,7 @@
 - import_tasks: vscode.yml
 - import_tasks: bashmarks.yml
 - import_tasks: rofi.yml
+- import_tasks: alacritty.yml
+- import_tasks: ranger.yml
+- import_tasks: vim.yml
+- import_tasks: zsh.yml

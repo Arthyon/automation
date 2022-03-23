@@ -1,0 +1,14 @@
+---
+- name: create ranger configuration directory
+  file:
+    name: /home/{{ ansible_user_id }}/.config/ranger
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: users
+
+- name: copy ranger configuration
+  copy:
+    src: ranger/rc.conf
+    dest: /home/{{ ansible_user_id }}/.config/ranger/rc.conf
+    owner: "{{ ansible_user_id }}"
+    group: users
