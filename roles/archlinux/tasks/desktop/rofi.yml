@@ -3,22 +3,3 @@
     name: rofi
   become: true
   
-- name: create rofi configuration directory
-  file:
-    name: /home/{{ archlinux_username }}/.config/rofi
-    state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
-
-- name: copy rofi configuration files
-  copy:
-    src: "rofi/{{item}}"
-    dest: /home/{{ archlinux_username}}/.config/rofi/{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
-  with_items:
-    - config.rasi
-    - customtheme.rasi
-  become: true
-  become_user: "{{ archlinux_username }}"

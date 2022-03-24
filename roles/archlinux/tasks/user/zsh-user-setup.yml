@@ -35,12 +35,7 @@
     owner: "{{ archlinux_username }}"
     group: users
   with_items:
-    - 10-aliases
-    - 10-completion
-    - 10-history
     - 10-oh-my-zsh
-    - 10-utility-functions
-    - 10-vim
   become: true
   become_user: "{{ archlinux_username }}"
 
@@ -51,8 +46,6 @@
     owner: "{{ archlinux_username }}"
     group: users
   with_items:
-    - 10-base
-    - 10-firefox
     - 10-qt
   become: true
   become_user: "{{ archlinux_username }}"

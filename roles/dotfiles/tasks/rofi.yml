@@ -13,10 +13,12 @@
     mode: 0755
   with_items:
     - monitor_layout.sh
+    - config.rasi
+    - customtheme.rasi
 
 - name: Add rofi launch keybindings to i3
-  blockinfile:
-    path: "/home/{{ ansible_user_id }}/.config/i3/config"
-    block: |
-      bindsym $mod+m exec ~/.config/rofi/monitor_layout.sh
-    marker: "# {mark} Rofi launcher bindings"
+  copy:
+    src: "rofi/30-rofi.conf"
+    dest: /home/{{ ansible_user_id }}/.config/i3/conf.d/30-rofi.conf
+    owner: "{{ ansible_user_id }}"
+    group: users
