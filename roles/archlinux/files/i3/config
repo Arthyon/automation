@@ -1,0 +1,6 @@
+# alt is mod key
+set $mod Mod1
+# $ms is super key
+set $ms Mod4 
+
+include ~/.config/i3/conf.d/*.conf

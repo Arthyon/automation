@@ -7,3 +7,4 @@
 - import_tasks: ranger.yml
 - import_tasks: vim.yml
 - import_tasks: zsh.yml
+- import_tasks: i3.yml

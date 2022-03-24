@@ -14,13 +14,33 @@
     group: users
   become: true
 
+- name: create i3 conf.d directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/i3/conf.d
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
 - name: configure i3
-  template:
+  copy:
     src: i3/config
     dest: /home/{{ archlinux_username }}/.config/i3/config
     owner: "{{ archlinux_username }}"
     group: users
   become: true
+
+- name: copy i3 configuration files
+  copy:
+    src: "i3/conf.d/{{item}}"
+    dest: /home/{{ archlinux_username}}/.config/i3/conf.d/{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+  with_items:
+    - 10-base.conf
+    - 10-movement.conf
+  become: true
+  become_user: "{{ archlinux_username }}"
 
 - name: install i3-quickterm deps
   pacman:
@@ -34,7 +54,7 @@
     name: i3-quickterm
 
 - name: configure i3 quickterm
-  template:
+  copy:
     src: i3/i3-quickterm.json
     dest: /home/{{ archlinux_username }}/.config/i3/i3-quickterm.json
     owner: "{{ archlinux_username }}"
