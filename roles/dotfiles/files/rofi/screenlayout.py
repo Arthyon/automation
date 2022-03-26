@@ -23,4 +23,4 @@ if len(sys.argv) == 1:
 else:
     devnull = open(os.devnull, 'wb')
     subprocess.Popen(
-        [f'{layoutsPath}/{sys.argv[1]}.sh && ~/.config/polybar/launch.sh'], stdout=devnull, stderr=devnull)
+        [f'{layoutsPath}/{sys.argv[1]}.sh && ~/.config/polybar/launch.sh'], shell=True, stdout=devnull, stderr=devnull)
