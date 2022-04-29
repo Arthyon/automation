@@ -47,3 +47,9 @@
     upgrade: true
     update_cache: true
   become: true
+
+- name: start paccache job
+  systemd:
+    name: paccache.timer
+    enabled: true
+  become: true

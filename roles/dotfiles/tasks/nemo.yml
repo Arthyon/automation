@@ -1,0 +1,5 @@
+---
+- name: configure nemo
+  shell: |
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec alacritty
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
