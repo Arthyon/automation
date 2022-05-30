@@ -45,6 +45,7 @@
 - Set up timeshift (`sudo timeshift-gtk` for easy setup)
 - If polybar wlan indicator does not work, replace interface name in polybar wlan module with your interface name
 - On desktops: Remove polybar battery module from the bars
+- On machines with blueooth: Add polybar bluetooth module to bar
 
 # dotfiles
 

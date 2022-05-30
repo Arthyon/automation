@@ -280,5 +280,12 @@ label-full =  %percentage%%
 label-discharging =  %percentage%% %consumption%w
 label-charging =  %percentage%%  %consumption%w
 
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/bluetooth.sh
+interval = 2
+click-left = exec blueberry
+click-right = exec ~/.config/polybar/toggle_bluetooth.sh
+
 
 ; vim:ft=dosini
