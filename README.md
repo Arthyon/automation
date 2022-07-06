@@ -12,7 +12,8 @@
   # [iwctl] station <dev> connect <ssid>
   ```
 - Clone repo
-- Install Ansible: `pacman -Syu python ansible`
+- Update keyring: `pacman -Syu archlinux-keyring`
+- Install Ansible and dependencies: `pacman -S python python-pip python-virtualenv ansible`
 - Add requirements: `ansible-galaxy install -r requirements.yml`
 - Run playbook: `ansible-playbook setup.yml`
   - Answer prompts
