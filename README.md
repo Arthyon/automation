@@ -1,7 +1,7 @@
 # Setup
 
 - Follow the [Arch installation guide](https://wiki.archlinux.org/index.php/installation_guide) normally
-  - Recommended packages to pacstrap: `sudo`, `iwd` and `dhcpcd`
+  - Recommended packages to pacstrap: `sudo`, `iwd` and `gvim`
 - Reboot and log in as root
 - Add wheel to sudoers using `visudo`
 - Connect to the internet
@@ -46,6 +46,8 @@
 - Set up timeshift (`sudo timeshift-gtk` for easy setup)
 - If polybar wlan indicator does not work, replace interface name in polybar wlan module with your interface name
 - On desktops: Remove polybar battery module from the bars
+- Trust bitwarden installation ssl cert (`sudo trust anchor --store <certname>`)
+- Copy wireguard config to `/etc/wireguard/<myclient>.conf`
 
 # dotfiles
 

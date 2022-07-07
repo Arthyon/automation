@@ -13,6 +13,7 @@
 - import_tasks: system/filesystem.yml
 - import_tasks: system/zsh.yml
 - import_tasks: system/automount.yml
+- import_tasks: system/vpn.yml
 
 # Set the clock and locale
 - import_tasks: locale/time.yml

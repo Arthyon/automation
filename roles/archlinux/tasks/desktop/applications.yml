@@ -15,7 +15,7 @@
     name:
       - firefox
       - firefox-developer-edition
-      - keepassxc
+      - bitwarden
       - thunderbird
       - steam
       - ranger
