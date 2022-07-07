@@ -1,0 +1,6 @@
+---
+- name: install wireguard
+  pacman:
+    name:
+      - wireguard-tools 
+  become: true

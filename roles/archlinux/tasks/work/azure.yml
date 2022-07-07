@@ -1,14 +1,4 @@
 ---
-- name: install azure storage emulator Azurite
-  community.general.npm:
-    name: azurite
-    global: true
-    state: present
-  become: yes
-  become_user: "{{ archlinux_username }}"
-  environment:
-    PATH: "/home/{{ archlinux_username }}/.nvm/versions/node/v{{ archlinux_node_version }}/bin:{{ ansible_env.PATH }}"
-
 - name: install azure tools (AUR)
   kewlfft.aur.aur:
     name:
