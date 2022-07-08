@@ -7,7 +7,7 @@
       - less
       - which
       - xclip
-      - scrot
+      - flameshot
   become: true
 
 - name: install applications
