@@ -14,6 +14,14 @@
     group: root
   become: true
 
+- name: Create symbolic link for systemd resolv.conf 
+  file:
+   src: "/run/systemd/resolve/resolv.conf"
+   dest: "/etc/resolv.conf"
+   state: link
+   force: true
+
+
 - name: start iwd daemon
   systemd:
     state: started
