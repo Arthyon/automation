@@ -1,0 +1,30 @@
+---
+
+- name: detect bluetooth device
+  shell: lsusb | grep -i bluetooth
+  register: bluetooth
+  ignore_errors: true
+  changed_when: false
+
+- name: install bluetooth packages
+  when: bluetooth.rc == 0
+  pacman:
+    name: 
+      - bluez
+      - bluez-utils
+      - blueberry
+  become: true
+
+- name: copy bluetooth polybar scripts
+  when: bluetooth.rc == 0
+  copy:
+    src: "bluetooth/{{item}}"
+    dest: /home/{{ archlinux_username}}/.config/polybar/{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: 0755
+  with_items:
+    - bluetooth.sh
+    - toggle_bluetooth.sh
+  become: true
+  become_user: "{{ archlinux_username }}"

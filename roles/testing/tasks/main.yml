@@ -1,0 +1,16 @@
+---
+
+- name: detect bluetooth device
+  shell: lsusb | grep -i bluetooth2
+  register: bluetooth
+  ignore_errors: true
+  changed_when: false
+
+- name: Print
+  debug:
+    msg=bluetooth.rc
+
+- name: Print2
+  when: bluetooth.rc == 0
+  debug:
+    msg="HEIHEI"      
