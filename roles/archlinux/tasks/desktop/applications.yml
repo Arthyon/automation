@@ -15,7 +15,7 @@
     name:
       - firefox
       - firefox-developer-edition
-      - keepassxc
+      - bitwarden
       - thunderbird
       - steam
       - ranger
@@ -38,7 +38,7 @@
     cmd: curl {{ item }} | gpg --import -
     warn: false
   with_items:
-    - https://download.spotify.com/debian/pubkey.gpg
+    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg 
 #
 
 - name: install from aur

@@ -8,3 +8,4 @@
 - import_tasks: vim.yml
 - import_tasks: zsh.yml
 - import_tasks: i3.yml
+- import_tasks: nemo.yml

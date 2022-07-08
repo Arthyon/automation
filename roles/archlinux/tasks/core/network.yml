@@ -3,7 +3,15 @@
   pacman:
     name:
       - iwd
-      - dhcpcd
+      - systemd-resolvconf
+  become: true
+
+- name: configure iwd
+  copy:
+    src: iwd/main.conf
+    dest: /etc/iwd/main.conf
+    owner: root
+    group: root
   become: true
 
 - name: start iwd daemon
@@ -13,10 +21,17 @@
     enabled: true
   become: yes
 
-- name: start dhcpcd daemon
+- name: start networkd daemon
   systemd:
     state: started
-    name: dhcpcd
+    name: systemd-networkd
+    enabled: true
+  become: yes
+
+- name: start resolve daemon
+  systemd:
+    state: started
+    name: systemd-resolved
     enabled: true
   become: yes
 
