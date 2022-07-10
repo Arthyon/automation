@@ -1,0 +1,7 @@
+---
+- name: install polkit
+  pacman:
+    name:
+      - polkit
+      - lxsession-gtk3
+  become: true
