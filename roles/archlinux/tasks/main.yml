@@ -11,6 +11,7 @@
 - import_tasks: system/cpu.yml
 - import_tasks: system/gpu.yml
 - import_tasks: system/filesystem.yml
+- import_tasks: system/polkit.yml
 - import_tasks: system/zsh.yml
 - import_tasks: system/automount.yml
 - import_tasks: system/bluetooth.yml

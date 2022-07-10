@@ -3,6 +3,5 @@
   pacman:
     name:
       - udisks2
-      - polkit
       - udiskie
   become: true
