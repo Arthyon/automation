@@ -45,7 +45,6 @@
     - zshenv
     - zshrc
     - zprofile
-    - xprofile
   become: true
   become_user: "{{ archlinux_username }}"
 

@@ -1,7 +1,9 @@
 ---
 - name: install lightdm
   pacman:
-    name: lightdm
+    name: 
+    - lightdm
+    - light-locker
   become: true
 
 - name: install aether theme
@@ -10,6 +12,7 @@
       - lightdm-webkit-theme-aether
     state: present
   become: true
+  become_user: aur_builder
 
 - name: create lightdm configuration directory
   file:
@@ -25,4 +28,10 @@
     dest: /etc/lightdm/lightdm.conf.d/10-default-settings.conf
     owner: root
     group: root
+  become: true
+
+- name: start lightdm service
+  systemd:
+    name: lightdm
+    enabled: true
   become: true
