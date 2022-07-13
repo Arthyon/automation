@@ -60,7 +60,7 @@
 - import_tasks: work/vpn.yml
 
 # Set up login manager
-- import_tasks: login-manager/lxdm.yml
+- import_tasks: login-manager/main.yml
 
 # Install informant (will break automatic pacman if installed earlier)
 - import_tasks: user/add-informant.yml
