@@ -30,7 +30,7 @@
     group: root
   become: true
 
-- name: start lxdm service
+- name: start lightdm service
   systemd:
     name: lightdm
     enabled: true
