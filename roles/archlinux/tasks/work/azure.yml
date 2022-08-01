@@ -15,6 +15,12 @@
   become: yes
   become_user: "{{ archlinux_username }}"
 
+- name: Remove exe file to make credential provider work with Rider
+  shell:
+    cmd: "rm /home/{{ archlinux_username }}/.nuget/plugins/netcore/CredentialProvider.Microsoft/CredentialProvider.Microsoft.exe"
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
 - name: Readd rsa support to openssh
   blockinfile:
     path: "/home/{{ archlinux_username }}/.ssh/config"
