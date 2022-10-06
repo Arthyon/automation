@@ -52,3 +52,7 @@
 # dotfiles
 
 - After logging in as your user, run `ansible-playbook setup-dotfiles.yml` for other config.
+
+# Thunderbolt
+
+To be able to use all usb ports on connected thunderbolt screens, add `pci=hpbussize=0x33` as kernel argument to boot entry (`boot/loader/entries/*.conf`)
