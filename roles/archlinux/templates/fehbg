@@ -1,5 +1,5 @@
 #!/bin/bash
 wallpaper="/home/{{ archlinux_username }}/.wallpaper"
 if [ -f "${wallpaper}" ]; then
-    feh --bg-fill "${wallpaper}"
+    feh --bg-scale --no-fehbg "${wallpaper}"
 fi
