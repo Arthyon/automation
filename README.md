@@ -25,7 +25,8 @@
 
 - Place an image in `/home/{{ archlinux_username }}/.wallpaper` to set background.
 
-- Configuring lightdm images: https://github.com/NoiSek/Aether#setting-an-avatar-image
+- Edit `bg`-property in `/etc/lxdm/lxdm.conf` to set background for login manager. Make sure this is placed somewhere like `/usr/share/lxdm/backgrounds/` to enable the login process to access the file.
+- Replace `/usr/share/lxdm/themes/Industrial/login.png` to change logo for login manager.
 
 - If using ZFS:
 

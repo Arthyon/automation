@@ -1,37 +1,27 @@
 ---
-- name: install lightdm
+- name: install lxdm
   pacman:
-    name: 
-    - lightdm
-    - light-locker
+    name: lxdm-gtk3
   become: true
 
-- name: install aether theme
-  kewlfft.aur.aur:
-    name:
-      - lightdm-webkit-theme-aether
-    state: present
-  become: true
-  become_user: aur_builder
-
-- name: create lightdm configuration directory
+- name: create lxdm configuration directory
   file:
-    name: /etc/lightdm/lightdm.conf.d
+    name: /etc/lxdm
     state: directory
     owner: root
     group: root
   become: true
 
-- name: configure lightdm
-  copy:
-    src: lightdm/10-default-settings.conf
-    dest: /etc/lightdm/lightdm.conf.d/10-default-settings.conf
+- name: configure lxdm
+  template:
+    src: lxdm.conf
+    dest: /etc/lxdm/lxdm.conf
     owner: root
     group: root
   become: true
 
-- name: start lightdm service
+- name: start lxdm service
   systemd:
-    name: lightdm
+    name: lxdm
     enabled: true
-  become: true
+  become: yes
