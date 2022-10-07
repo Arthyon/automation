@@ -45,6 +45,7 @@
     - zshenv
     - zshrc
     - zprofile
+    - dmrc
   become: true
   become_user: "{{ archlinux_username }}"
 
