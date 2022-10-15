@@ -14,13 +14,28 @@
     group: root
   become: true
 
-- name: Create symbolic link for systemd resolv.conf 
+- name: create systemd override directory for iwd
   file:
-   src: "/run/systemd/resolve/resolv.conf"
-   dest: "/etc/resolv.conf"
-   state: link
-   force: true
+    name: /etc/systemd/system/iwd.service.d
+    state: directory
+    owner: root
+    group: root
+  become: true
 
+- name: add override unit file for iwd
+  copy:
+    src: iwd/systemd-unit.override.conf
+    dest: /etc/systemd/system/iwd.service.d/override.conf
+    owner: root
+    group: root
+  become: true
+
+- name: Create symbolic link for systemd resolv.conf
+  file:
+    src: "/run/systemd/resolve/resolv.conf"
+    dest: "/etc/resolv.conf"
+    state: link
+    force: true
 
 - name: start iwd daemon
   systemd:
@@ -46,7 +61,6 @@
 - name: Set hostname
   hostname:
     name: "{{ archlinux_hostname }}"
-
 
 - name: configure hosts file
   template:
