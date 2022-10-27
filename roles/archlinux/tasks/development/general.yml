@@ -11,3 +11,10 @@
       - docker
     append: true
   become: true
+
+- name: mask systemd-networkd-wait-online to stop docker from being blocked on startup
+  systemd:
+    name: systemd-networkd-wait-online.service
+    enabled: no
+    masked: yes
+  become: yes
