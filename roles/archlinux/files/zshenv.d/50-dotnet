@@ -2,4 +2,9 @@ export DOTNET_ROOT=/usr/share/dotnet
 
 # To resolve conflict between mono and MSBuild
 # Set path to existing sdk
-export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/6.*/Sdks );
+# This interferes with projects with different SDK-versions.
+# Remove temporarily, as mono isn't used much anymore
+#export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/7.*/Sdks );
+
+# Default to development environment
+export ASPNETCORE_ENVIRONMENT=Development
