@@ -50,6 +50,8 @@
 - Trust bitwarden installation ssl cert (`sudo trust anchor --store <certname>`)
 - Copy wireguard config to `/etc/wireguard/<myclient>.conf`
 
+- Add `source /usr/share/nvm/init-nvm.sh` to the end of `.profile` to enable Rider to use npm in tasks
+
 # dotfiles
 
 - After logging in as your user, run `ansible-playbook setup-dotfiles.yml` for other config.

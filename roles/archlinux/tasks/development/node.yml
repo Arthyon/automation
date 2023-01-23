@@ -22,15 +22,6 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: copy zshrc file
-  copy:
-    src: "zsh.d/50-node"
-    dest: /home/{{ archlinux_username}}/.config/zsh.d/50-node
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
-  become_user: "{{ archlinux_username }}"
-
 - name: Install javascript VSCode extensions
   import_role:
     name: gantsign.visual-studio-code-extensions
