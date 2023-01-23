@@ -1,2 +1,0 @@
-# Make 'nvm'-command available in shell
-source /usr/share/nvm/init-nvm.sh

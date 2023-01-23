@@ -5,3 +5,6 @@ done
 for file in "$HOME/.config/zsh_completion.d"/*; do
     source "$file"
 done
+
+# Make 'nvm'-command available. Must be sourced last ...
+source /usr/share/nvm/init-nvm.sh
