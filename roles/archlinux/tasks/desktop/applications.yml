@@ -20,6 +20,8 @@
       - steam
       - ranger
       - nemo
+      - lib32-libsm # Needed by Guitar pro
+      - lib32-pipewire-jack # Needed by Guitar pro
   become: true
 
 - name: import gpg keys for AUR packages
@@ -29,7 +31,7 @@
     cmd: curl {{ item }} | gpg --import -
     warn: false
   with_items:
-    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg 
+    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg
 
 - name: import gpg keys for AUR packages for build user
   become: yes
@@ -38,7 +40,7 @@
     cmd: curl {{ item }} | gpg --import -
     warn: false
   with_items:
-    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg 
+    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg
 #
 
 - name: install from aur
@@ -48,6 +50,7 @@
       - yay
       - spotify
       - jotta-cli
+      - guitar-pro
     state: present
   become: true
   become_user: aur_builder
