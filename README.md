@@ -11,7 +11,7 @@
 - Clone repo
 - Update keyring: `pacman -Syu archlinux-keyring`
 - Add requirements: `ansible-galaxy install -r requirements.yml`
-- Run playbook: `ansible-playbook setup.yml`
+- Run playbook: `ansible-playbook setup.yml --ask-become-pass`
   - Answer prompts
   - Wait a while ...
 - Set password for your user: `passwd <your-user>`
