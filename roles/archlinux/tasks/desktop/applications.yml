@@ -14,57 +14,20 @@
   pacman:
     name:
       - firefox
-      - firefox-developer-edition
       - bitwarden
-      - thunderbird
+      - spotify-launcher
       - steam
       - ranger
-      - nemo
       - lib32-libsm # Needed by Guitar pro
       - lib32-pipewire-jack # Needed by Guitar pro
   become: true
 
-- name: import gpg keys for AUR packages
-  become: yes
-  become_user: "{{ archlinux_username }}"
-  shell:
-    cmd: curl {{ item }} | gpg --import -
-    warn: false
-  with_items:
-    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg
-
-- name: import gpg keys for AUR packages for build user
-  become: yes
-  become_user: aur_builder
-  shell:
-    cmd: curl {{ item }} | gpg --import -
-    warn: false
-  with_items:
-    - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg
-#
-
 - name: install from aur
   kewlfft.aur.aur:
     name:
-      - visual-studio-code-bin
       - yay
-      - spotify
       - jotta-cli
       - guitar-pro
     state: present
   become: true
   become_user: aur_builder
-
-- name: Install VSCode extensions
-  import_role:
-    name: gantsign.visual-studio-code-extensions
-  vars:
-    users:
-      - username: "{{ archlinux_username }}"
-        visual_studio_code_extensions:
-          - vscodevim.vim
-          - vscode-icons-team.vscode-icons
-          - editorconfig.editorconfig
-          - mechatroner.rainbow-csv
-          - esbenp.prettier-vscode
-          - hbenl.vscode-test-explorer

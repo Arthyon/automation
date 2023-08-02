@@ -39,6 +39,13 @@
   with_items:
     - 10-base.conf
     - 10-movement.conf
+    - 10-audio-keys.conf
+    - 10-autostart.conf
+    - 10-keyboardlayout.conf
+    - 10-lockscreen.conf
+    - 10-visuals.conf
+    - 20-screenshot.conf
+    - 50-floating-overrides.conf
   become: true
   become_user: "{{ archlinux_username }}"
 

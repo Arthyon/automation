@@ -1,0 +1,25 @@
+- name: install nemo and ranger
+  pacman:
+    name:
+      - nemo
+      - ranger
+  become: true
+
+- name: configure nemo
+  shell: |
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec alacritty
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
+
+- name: create ranger configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/ranger
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+
+- name: copy ranger configuration
+  copy:
+    src: ranger/rc.conf
+    dest: /home/{{ archlinux_username }}/.config/ranger/rc.conf
+    owner: "{{ archlinux_username }}"
+    group: users

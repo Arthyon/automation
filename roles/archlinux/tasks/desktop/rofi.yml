@@ -2,4 +2,28 @@
   pacman:
     name: rofi
   become: true
-  
+
+- name: create rofi configuration directory
+  file:
+    name: /home/{{archlinux_username}}/.config/rofi
+    state: directory
+
+- name: create rofi custom scripts
+  copy:
+    src: "rofi/{{item}}"
+    dest: /home/{{ archlinux_username }}/.config/rofi/{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: 0755
+  with_items:
+    - monitor_layout.sh
+    - screenlayout.py
+    - config.rasi
+    - customtheme.rasi
+
+- name: Add rofi launch keybindings to i3
+  copy:
+    src: "rofi/30-rofi.conf"
+    dest: /home/{{ archlinux_username }}/.config/i3/conf.d/30-rofi.conf
+    owner: "{{ archlinux_username }}"
+    group: users

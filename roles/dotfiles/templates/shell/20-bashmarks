@@ -1,1 +1,0 @@
-source /home/{{ansible_user_id}}/.config/bashmarks/bashmarks.sh

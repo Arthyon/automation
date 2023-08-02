@@ -1,0 +1,22 @@
+---
+- name: install work applications from aur
+  kewlfft.aur.aur:
+    name:
+      - postman-bin
+      - slack-desktop
+      - teams
+    state: present
+  # become: true
+  # become_user: aur_builder
+
+# Ref: https://docs.microsoft.com/en-us/answers/questions/42095/sharing-screen-not-working-anymore-bug.html
+- name: Check that bugged screen sharing overlay exists
+  stat:
+    path: /usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay
+  register: overlay
+  become: true
+
+- name: Fix screen sharing bug in teams when using i3
+  command: mv "{{ overlay.stat.path }}" "{{ overlay.stat.path }}.bak"
+  when: overlay.stat.exists == true
+  become: true

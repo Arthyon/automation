@@ -1,0 +1,1 @@
+export PATH=$PATH:/home/{{archlinux_username}}/.config/git

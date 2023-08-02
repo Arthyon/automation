@@ -1,11 +1,10 @@
 ---
-- name: install timeshift
-  kewlfft.aur.aur:
-    name: timeshift
-    state: present
-  become: true
-  become_user: aur_builder
-  changed_when: false
+- name: install snapper
+  pacman:
+    name:
+      - snapper
+
+# TODO Configure snapper
 
 - name: start cronie service
   systemd:

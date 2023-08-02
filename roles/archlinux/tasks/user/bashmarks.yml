@@ -1,0 +1,15 @@
+---
+- name: create bashmarks configuration directory
+  file:
+    name: /home/{{archlinux_username}}/.config/bashmarks
+    state: directory
+
+- name: create bashmarks script
+  copy:
+    src: bashmarks/bashmarks.sh
+    dest: /home/{{archlinux_username}}/.config/bashmarks/bashmarks.sh
+
+- name: configure bashmarks
+  template:
+    src: shell/20-bashmarks
+    dest: /home/{{archlinux_username}}/.config/zsh.d/

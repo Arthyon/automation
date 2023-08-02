@@ -1,6 +1,7 @@
 ---
 # Remove informant (will break automatic pacman if installed)
 - import_tasks: user/remove-informant.yml
+- import_tasks: aur-setup/create-aur-user.yml
 
 # Install bare necessities
 - import_tasks: core/pacman.yml
@@ -10,27 +11,26 @@
 # Setup system
 - import_tasks: system/cpu.yml
 - import_tasks: system/gpu.yml
-- import_tasks: system/filesystem.yml
 - import_tasks: system/polkit.yml
 - import_tasks: system/zsh.yml
 - import_tasks: system/automount.yml
 - import_tasks: system/bluetooth.yml
 - import_tasks: system/vpn.yml
+- import_tasks: system/homeserver.yml
 
 # Set the clock and locale
 - import_tasks: locale/time.yml
 - import_tasks: locale/locale.yml
 
 # Set up aur user
-- import_tasks: aur-setup/create-aur-user.yml
 
 # Configure a user
 - import_tasks: user/user.yml
 - import_tasks: user/openssh.yml
-- import_tasks: user/zsh-user-setup.yml
 - import_tasks: user/manpages.yml
 - import_tasks: user/git.yml
 - import_tasks: user/backup.yml
+- import_tasks: user/bashmarks.yml
 
 # Install the desktop
 - import_tasks: desktop/keyring.yml
@@ -45,19 +45,11 @@
 - import_tasks: desktop/polybar.yml
 - import_tasks: desktop/wallpaper.yml
 - import_tasks: desktop/terminal.yml
+- import_tasks: desktop/filebrowser.yml
 - import_tasks: desktop/applications.yml
 
-# Install some programming languages
+# Development
 - import_tasks: development/general.yml
-- import_tasks: development/python.yml
-- import_tasks: development/node.yml
-- import_tasks: development/dotnet.yml
-- import_tasks: development/rust.yml
-
-# Install work-specific stuff
-- import_tasks: work/azure.yml
-- import_tasks: work/applications.yml
-- import_tasks: work/vpn.yml
 
 # Set up login manager
 - import_tasks: login-manager/main.yml

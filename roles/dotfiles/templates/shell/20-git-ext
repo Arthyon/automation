@@ -1,1 +1,0 @@
-export PATH=$PATH:/home/{{ansible_user_id}}/.config/git
