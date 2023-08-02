@@ -5,15 +5,13 @@
 
 - name: create rofi configuration directory
   file:
-    name: /home/{{archlinux_username}}/.config/rofi
+    name: /home/{{ansible_user_id}}/.config/rofi
     state: directory
 
 - name: create rofi custom scripts
   copy:
     src: "rofi/{{item}}"
-    dest: /home/{{ archlinux_username }}/.config/rofi/{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id }}/.config/rofi/{{item}}
     mode: 0755
   with_items:
     - monitor_layout.sh
@@ -24,6 +22,4 @@
 - name: Add rofi launch keybindings to i3
   copy:
     src: "rofi/30-rofi.conf"
-    dest: /home/{{ archlinux_username }}/.config/i3/conf.d/30-rofi.conf
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id }}/.config/i3/conf.d/30-rofi.conf

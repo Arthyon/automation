@@ -11,7 +11,3 @@
     state: started
     enabled: true
   become: true
-
-- name: Set timezone to Norway
-  community.general.timezone:
-    name: Europe/Oslo

@@ -11,10 +11,10 @@
   copy:
     src: "dotnet/50-dotnet"
     dest: /home/{{ ansible_user_id}}/.config/zshenv.d/50-dotnet
-    # owner: "{{ archlinux_username }}"
+    # owner: "{{ ansible_user_id }}"
     # group: users
   # become: true
-  # become_user: "{{ archlinux_username }}"
+  # become_user: "{{ ansible_user_id }}"
 
 - name: install jetbrains toolbox
   kewlfft.aur.aur:
@@ -28,5 +28,5 @@
   copy:
     src: dotnet/ideavimrc
     dest: /home/{{ ansible_user_id }}/.ideavimrc
-    owner: "{{ archlinux_username }}"
+    owner: "{{ ansible_user_id }}"
     group: users

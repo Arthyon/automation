@@ -1,5 +1,5 @@
 #!/bin/bash
-wallpaper="/home/{{ archlinux_username }}/.wallpaper"
+wallpaper="/home/{{ ansible_user_id }}/.wallpaper"
 if [ -f "${wallpaper}" ]; then
     feh --bg-scale --no-fehbg "${wallpaper}"
 fi

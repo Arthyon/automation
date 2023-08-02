@@ -6,7 +6,7 @@
 
 - name: add user to docker group
   user:
-    name: "{{ archlinux_username }}"
+    name: "{{ ansible_user_id }}"
     groups:
       - docker
     append: true
@@ -24,15 +24,13 @@
     name:
       - visual-studio-code-bin
     state: present
-  become: true
-  become_user: aur_builder
 
 - name: Install VSCode extensions
   import_role:
     name: gantsign.visual-studio-code-extensions
   vars:
     users:
-      - username: "{{ archlinux_username }}"
+      - username: "{{ ansible_user_id }}"
         visual_studio_code_extensions:
           - vscodevim.vim
           - vscode-icons-team.vscode-icons

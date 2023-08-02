@@ -8,16 +8,10 @@
 
 - name: create dunst configuration directory
   file:
-    name: /home/{{ archlinux_username }}/.config/dunst
+    name: /home/{{ ansible_user_id }}/.config/dunst
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
 
 - name: configure dunst
   copy:
     src: dunstrc
-    dest: /home/{{ archlinux_username }}/.config/dunst/dunstrc
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
+    dest: /home/{{ ansible_user_id }}/.config/dunst/dunstrc

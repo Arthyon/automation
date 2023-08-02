@@ -1,15 +1,15 @@
 ---
 - name: create bashmarks configuration directory
   file:
-    name: /home/{{archlinux_username}}/.config/bashmarks
+    name: /home/{{ansible_user_id}}/.config/bashmarks
     state: directory
 
 - name: create bashmarks script
   copy:
     src: bashmarks/bashmarks.sh
-    dest: /home/{{archlinux_username}}/.config/bashmarks/bashmarks.sh
+    dest: /home/{{ansible_user_id}}/.config/bashmarks/bashmarks.sh
 
 - name: configure bashmarks
   template:
     src: shell/20-bashmarks
-    dest: /home/{{archlinux_username}}/.config/zsh.d/
+    dest: /home/{{ansible_user_id}}/.config/zsh.d/

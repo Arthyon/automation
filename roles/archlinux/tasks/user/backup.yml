@@ -3,6 +3,7 @@
   pacman:
     name:
       - snapper
+  become: true
 
 # TODO Configure snapper
 
@@ -10,4 +11,4 @@
   systemd:
     name: cronie
     enabled: true
-  become: yes
+  become: true

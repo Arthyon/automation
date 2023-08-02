@@ -1,1 +1,1 @@
-export PATH=$PATH:/home/{{archlinux_username}}/.config/git
+export PATH=$PATH:/home/{{ansible_user_id}}/.config/git

@@ -3,13 +3,11 @@
   kewlfft.aur.aur:
     name: informant
     state: present
-  become: true
-  become_user: aur_builder
   changed_when: false
 
 - name: add user to informant group
   user:
-    name: "{{ archlinux_username }}"
+    name: "{{ ansible_user_id }}"
     groups:
       - informant
     append: true

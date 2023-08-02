@@ -36,27 +36,28 @@
     dest: "/etc/resolv.conf"
     state: link
     force: true
+  become: true
 
 - name: start iwd daemon
   systemd:
     state: started
     name: iwd
     enabled: true
-  become: yes
+  become: true
 
 - name: start networkd daemon
   systemd:
     state: started
     name: systemd-networkd
     enabled: true
-  become: yes
+  become: true
 
 - name: start resolve daemon
   systemd:
     state: started
     name: systemd-resolved
     enabled: true
-  become: yes
+  become: true
 
 - name: configure hosts file
   template:
@@ -64,3 +65,4 @@
     dest: /etc/hosts
     owner: root
     group: root
+  become: true

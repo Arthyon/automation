@@ -12,14 +12,10 @@
 
 - name: create ranger configuration directory
   file:
-    name: /home/{{ archlinux_username }}/.config/ranger
+    name: /home/{{ ansible_user_id }}/.config/ranger
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
 
 - name: copy ranger configuration
   copy:
     src: ranger/rc.conf
-    dest: /home/{{ archlinux_username }}/.config/ranger/rc.conf
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id }}/.config/ranger/rc.conf

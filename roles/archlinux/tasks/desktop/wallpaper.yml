@@ -7,9 +7,5 @@
 - name: template wallpaper script
   template:
     src: fehbg
-    dest: /home/{{ archlinux_username }}/.fehbg
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id }}/.fehbg
     mode: 0755
-  become: true
-  become_user: "{{ archlinux_username }}"

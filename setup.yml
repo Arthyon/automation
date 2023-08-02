@@ -3,7 +3,3 @@
   connection: local
   roles:
     - archlinux
-  vars_prompt:
-    - name: "archlinux_username"
-      prompt: "Enter your system username"
-      private: false

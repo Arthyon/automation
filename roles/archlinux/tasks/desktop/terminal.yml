@@ -6,14 +6,10 @@
 
 - name: create alacritty configuration directory
   file:
-    name: /home/{{ archlinux_username }}/.config/alacritty
+    name: /home/{{ ansible_user_id }}/.config/alacritty
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
 
 - name: configure alacritty
   copy:
     src: alacritty/alacritty.yml
-    dest: /home/{{ archlinux_username }}/.config/alacritty/alacritty.yml
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id }}/.config/alacritty/alacritty.yml

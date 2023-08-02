@@ -6,37 +6,26 @@
 
 - name: create polybar configuration directory
   file:
-    name: /home/{{ archlinux_username }}/.config/polybar
+    name: /home/{{ ansible_user_id }}/.config/polybar
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
 
 - name: copy polybar configuration files
   copy:
     src: "polybar/{{item}}"
-    dest: /home/{{ archlinux_username}}/.config/polybar/{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id}}/.config/polybar/{{item}}
     mode: 0755
   with_items:
     - config
     - inputlang.sh
     - launch.sh
     - spotify.sh
-  become: true
-  become_user: "{{ archlinux_username }}"
 
 - name: copy bluetooth polybar scripts
   when: bluetooth.rc == 0
   copy:
     src: "bluetooth/{{item}}"
-    dest: /home/{{ archlinux_username}}/.config/polybar/{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id}}/.config/polybar/{{item}}
     mode: 0755
   with_items:
     - bluetooth.sh
     - toggle_bluetooth.sh
-  become: true
-  become_user: "{{ archlinux_username }}"
