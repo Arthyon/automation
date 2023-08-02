@@ -36,16 +36,11 @@
     - 20-screenshot.conf
     - 50-floating-overrides.conf
 
-- name: install i3-quickterm deps
-  pacman:
+- name: install i3-quickterm
+  kewlfft.aur.aur:
     name:
-      - python
-      - python-pip
-  become: true
-
-- name: install i3 quickterm
-  pip:
-    name: i3-quickterm
+      - python-i3-quickterm
+    state: present
 
 - name: configure i3 quickterm
   copy:
