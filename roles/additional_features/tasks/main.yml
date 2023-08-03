@@ -4,19 +4,31 @@
   tags: always
 
 - import_tasks: development/python.yml
-  tags: dev/python
+  tags:
+    - dev/python
+    - never
 
 - import_tasks: development/node.yml
-  tags: dev/node
+  tags:
+    - dev/node
+    - never
 
 - import_tasks: development/rust.yml
-  tags: dev/rust
+  tags:
+    - dev/rust
+    - never
 
 - import_tasks: development/dotnet.yml
-  tags: dev/dotnet
+  tags:
+    - dev/dotnet
+    - never
 
 - import_tasks: environments/azure.yml
-  tags: env/azure
+  tags:
+    - env/azure
+    - never
 
 - import_tasks: work.yml
-  tags: work
+  tags:
+    - work
+    - never

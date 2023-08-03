@@ -2,6 +2,7 @@
 - name: install snapper
   pacman:
     name:
+      - cronie
       - snapper
   become: true
 

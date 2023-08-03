@@ -2,41 +2,53 @@
 
 ## Installing Arch
 
+- Enable network
+  - `iwctl`
+  - `[iwd]# station <wlan> scan`
+  - `[iwd]# station <wlan> connect <ssid>`
 - Download archinstall config: `curl https://raw.githubusercontent.com/Arthyon/automation/master/user_configuration.json --output user_configuration.json`
 - Change info to match current setup
 - Run archinstall `archinstall --config user_configuration.json`
+  - Set up user and disk layout
+- Reboot
 
 ## Run Ansible
 
 - Clone repo
-- Update keyring: `pacman -Syu archlinux-keyring`
 - Add requirements: `ansible-galaxy install -r requirements.yml`
 - Run playbook: `ansible-playbook setup.yml --ask-become-pass`
-  - Answer prompts
   - Wait a while ...
-- Set password for your user: `passwd <your-user>`
+  - **NOTE**: If any aur-installations take more time than sudo's `passwd_timeout` you may be prompted for password during installation
 - Reboot
 
 # Postinstall
 
 ## General setup
 
-- Run `run_jottad` to set up jotta cli
+- Set up JottaCloud
+  - `run_jottad` 
+  - `jotta-cli login`
+  - `jotta-cli sync setup --root ~/JottaCloud`
+  - `jotta-cli sync start`
+
 - Copy wireguard config to `/etc/wireguard/<myclient>.conf`
-- Configure global git config (user, email, gpg key)
+
+- Configure global git config:
+  - `git config --global user.name "<name>"`
+  - `git config --global user.email "<email>"`
+- Configure gpg:
+  - If needed, create new: `gpg --full-generate-key`
+  - `gpg --list-secret-keys --keyid-format=long`
+  - `git config --global user.signingkey <keyid>`
+  - `git config --global commit.gpgsign true`
+  - Export public key: `gpg --armor --export <keyid> | xclip`
+
 
 ## Background images
 
 - Place an image in `$HOME/.wallpaper` to set background.
-
 - Edit `bg`-property in `/etc/lxdm/lxdm.conf` to set background for login manager. Make sure this is placed somewhere like `/usr/share/lxdm/backgrounds/` to enable the login process to access the file.
 - Replace `/usr/share/lxdm/themes/Industrial/login.png` to change logo for login manager.
-
-## Performance
-
-- Set scheduler based on drive type
-
-  - https://wiki.archlinux.org/title/Improving_performance#Changing_I/O_scheduler
 
 ## Backups
 

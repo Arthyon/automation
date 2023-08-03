@@ -1,0 +1,7 @@
+---
+- name: Enable fstrim timer
+  systemd:
+    state: started
+    name: fstrim.timer
+    enabled: true
+  become: true

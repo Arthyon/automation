@@ -10,9 +10,11 @@
 # Setup system
 - import_tasks: system/cpu.yml
 - import_tasks: system/gpu.yml
+- import_tasks: system/disks.yml
 - import_tasks: system/polkit.yml
 - import_tasks: system/zsh.yml
 - import_tasks: system/automount.yml
+- import_tasks: system/thunderbolt.yml
 - import_tasks: system/bluetooth.yml
 - import_tasks: system/vpn.yml
 - import_tasks: system/homeserver.yml

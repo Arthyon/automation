@@ -44,3 +44,10 @@
     - 10-qt
     - 10-base
     - 10-firefox
+    - 10-vi-mode
+
+- name: Add dummy file to completion directory
+  copy:
+    content: ""
+    dest: "/home/{{ ansible_user_id }}/.config/zsh_completion.d/dummy"
+    force: false

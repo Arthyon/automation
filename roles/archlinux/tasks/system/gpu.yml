@@ -48,6 +48,7 @@
   pacman:
     name:
       - nvidia
+      - nvidia-prime # for hybrid graphics
       - lib32-nvidia-utils # Steam
   when: not display_controllers.results[2].failed
   become: true

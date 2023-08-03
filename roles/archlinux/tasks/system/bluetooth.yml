@@ -1,4 +1,10 @@
 ---
+- name: Install usbutils
+  pacman:
+    name:
+      - usbutils
+  become: true
+
 - name: detect bluetooth device
   shell: lsusb | grep -i bluetooth
   register: bluetooth
@@ -12,4 +18,18 @@
       - bluez
       - bluez-utils
       - blueberry
+  become: true
+
+- name: start bluetooth daemon
+  systemd:
+    state: started
+    name: bluetooth
+    enabled: true
+  become: true
+
+- name: Disable bluetooth on startup
+  lineinfile:
+    path: /etc/bluetooth/main.conf
+    regexp: '^#?AutoEnable\=.*$'
+    line: "AutoEnable=false"
   become: true

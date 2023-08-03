@@ -7,6 +7,7 @@
     groups:
       - wheel
     shell: /bin/zsh
+    append: true
   become: true
 
 - name: create home directory

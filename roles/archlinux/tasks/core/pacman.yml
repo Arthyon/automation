@@ -21,6 +21,7 @@
   pacman:
     update_cache: true
   become: true
+  changed_when: false
 
 - name: install pacman tools
   pacman:
@@ -35,6 +36,7 @@
 - name: update pacman mirrorlist
   script: update-mirrorlist.sh
   become: true
+  changed_when: false
 
 - name: install base packages
   pacman:
