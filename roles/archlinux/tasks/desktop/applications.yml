@@ -8,6 +8,8 @@
       - which
       - xclip
       - flameshot
+      - unzip
+      - solaar
   become: true
 
 - name: install applications
