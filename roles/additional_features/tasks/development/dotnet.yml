@@ -1,0 +1,32 @@
+---
+- name: install dotnet core
+  pacman:
+    name:
+      - dotnet-sdk
+      - dotnet-runtime
+      - aspnet-runtime
+  become: true
+
+- name: copy zshenv file
+  copy:
+    src: "dotnet/50-dotnet"
+    dest: /home/{{ ansible_user_id}}/.config/zshenv.d/50-dotnet
+    # owner: "{{ ansible_user_id }}"
+    # group: users
+  # become: true
+  # become_user: "{{ ansible_user_id }}"
+
+- name: install jetbrains toolbox
+  kewlfft.aur.aur:
+    name:
+      - jetbrains-toolbox
+    state: present
+  # become: true
+  # become_user: aur_builder
+
+- name: configure rider vim plugin
+  copy:
+    src: dotnet/ideavimrc
+    dest: /home/{{ ansible_user_id }}/.ideavimrc
+    owner: "{{ ansible_user_id }}"
+    group: users

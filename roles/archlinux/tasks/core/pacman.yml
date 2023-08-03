@@ -6,6 +6,7 @@
     line: "[multilib]"
     regexp: "^\\[multilib\\]"
     insertafter: "^#\\[multilib\\]"
+  become: true
 
 - name: "add multilib (cont)"
   lineinfile:
@@ -14,11 +15,13 @@
     line: "Include = /etc/pacman.d/mirrorlist"
     insertafter: "^\\[multilib\\]"
     regexp: "Include = /etc/pacman.d/mirrorlist"
+  become: true
 
 - name: update pacman cache
   pacman:
     update_cache: true
   become: true
+  changed_when: false
 
 - name: install pacman tools
   pacman:
@@ -33,6 +36,7 @@
 - name: update pacman mirrorlist
   script: update-mirrorlist.sh
   become: true
+  changed_when: false
 
 - name: install base packages
   pacman:

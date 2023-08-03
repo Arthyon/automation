@@ -1,5 +1,0 @@
----
-- name: install vpn
-  pacman:
-    name: strongswan
-  become: true

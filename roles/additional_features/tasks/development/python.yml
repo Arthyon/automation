@@ -1,0 +1,17 @@
+---
+- name: install python development tools
+  pacman:
+    name:
+      - python
+      - python-pip
+      - python-virtualenv
+  become: true
+
+- name: copy zshenv file
+  copy:
+    src: "python/50-python"
+    dest: /home/{{ ansible_user_id}}/.config/zshenv.d/50-python
+  #   owner: "{{ ansible_user_id }}"
+  #   group: users
+  # become: true
+  # become_user: "{{ ansible_user_id }}"

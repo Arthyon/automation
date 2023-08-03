@@ -1,4 +1,9 @@
 ---
+- name: Install usbutils
+  pacman:
+    name:
+      - usbutils
+  become: true
 
 - name: detect bluetooth device
   shell: lsusb | grep -i bluetooth
@@ -9,22 +14,22 @@
 - name: install bluetooth packages
   when: bluetooth.rc == 0
   pacman:
-    name: 
+    name:
       - bluez
       - bluez-utils
       - blueberry
   become: true
 
-- name: copy bluetooth polybar scripts
-  when: bluetooth.rc == 0
-  copy:
-    src: "bluetooth/{{item}}"
-    dest: /home/{{ archlinux_username}}/.config/polybar/{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
-    mode: 0755
-  with_items:
-    - bluetooth.sh
-    - toggle_bluetooth.sh
+- name: start bluetooth daemon
+  systemd:
+    state: started
+    name: bluetooth
+    enabled: true
   become: true
-  become_user: "{{ archlinux_username }}"
+
+- name: Disable bluetooth on startup
+  lineinfile:
+    path: /etc/bluetooth/main.conf
+    regexp: '^#?AutoEnable\=.*$'
+    line: "AutoEnable=false"
+  become: true

@@ -6,16 +6,10 @@
 
 - name: create picom configuration directory
   file:
-    name: /home/{{ archlinux_username }}/.config/picom
+    name: /home/{{ ansible_user_id }}/.config/picom
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
 
 - name: configure picom
   copy:
     src: picom.conf
-    dest: /home/{{ archlinux_username }}/.config/picom/picom.conf
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
+    dest: /home/{{ ansible_user_id }}/.config/picom/picom.conf

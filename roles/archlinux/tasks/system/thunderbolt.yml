@@ -1,0 +1,12 @@
+---
+- name: Install bolt
+  pacman:
+    name:
+      - bolt
+  become: true
+
+- name: Add udev rules to authorize thunderbolt devices automatically
+  copy:
+    src: "thunderbolt/99-removable.rules"
+    dest: /etc/udev/rules.d/99-removable.rules
+  become: true

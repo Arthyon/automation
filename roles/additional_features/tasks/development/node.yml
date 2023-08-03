@@ -1,0 +1,42 @@
+- name: install nvm
+  kewlfft.aur.aur:
+    name:
+      - nvm
+    state: present
+  # become: true
+  # become_user: aur_builder
+
+- name: Install node and set version
+  shell: "source /usr/share/nvm/init-nvm.sh && nvm install {{ archlinux_node_version }} && nvm alias default {{ archlinux_node_version }}"
+  # become: yes
+  # become_method: su
+  # become_user: "{{ ansible_user_id }}"
+  # become_flags: "-s /usr/bin/zsh"
+
+- name: Add needed NVM-settings to .zshrc
+  blockinfile:
+    path: "/home/{{ ansible_user_id }}/.zshrc"
+    block: |
+      # Make 'nvm'-command available. Must be sourced last ...
+      NVM_SYMLINK_CURRENT=true
+      source /usr/share/nvm/init-nvm.sh
+    marker: "# {mark} NVM setup"
+  # become: yes
+  # become_user: "{{ ansible_user_id }}"
+
+- name: copy zshenv file
+  copy:
+    src: "node/50-node"
+    dest: /home/{{ ansible_user_id}}/.config/zshenv.d/50-node
+    # owner: "{{ ansible_user_id }}"
+    # group: users
+  # become: true
+  # become_user: "{{ ansible_user_id }}"
+- name: Install node VSCode extensions
+  import_role:
+    name: gantsign.visual-studio-code-extensions
+  vars:
+    users:
+      - username: "{{ ansible_user_id }}"
+        visual_studio_code_extensions:
+          - esbenp.prettier-vscode

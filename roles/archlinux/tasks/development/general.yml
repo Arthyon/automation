@@ -6,7 +6,7 @@
 
 - name: add user to docker group
   user:
-    name: "{{ archlinux_username }}"
+    name: "{{ ansible_user_id }}"
     groups:
       - docker
     append: true
@@ -18,3 +18,30 @@
     enabled: no
     masked: yes
   become: yes
+
+- name: install visual studio code
+  kewlfft.aur.aur:
+    name:
+      - visual-studio-code-bin
+    state: present
+
+- name: Install VSCode extensions
+  import_role:
+    name: gantsign.visual-studio-code-extensions
+  vars:
+    users:
+      - username: "{{ ansible_user_id }}"
+        visual_studio_code_extensions:
+          - vscodevim.vim
+          - vscode-icons-team.vscode-icons
+          - editorconfig.editorconfig
+          - mechatroner.rainbow-csv
+          - redhat.vscode-yaml
+
+- name: replace vs code settings
+  copy:
+    src: "code/{{item}}"
+    dest: /home/{{ansible_user_id}}/.config/Code/User/{{item}}
+  with_items:
+    - keybindings.json
+    - settings.json

@@ -1,0 +1,38 @@
+---
+- name: install azure tools (AUR)
+  kewlfft.aur.aur:
+    name:
+      - azure-functions-core-tools-bin
+      - azure-cli
+    state: present
+
+- name: Install Microsoft Credential Provider
+  shell:
+    cmd: "wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash"
+    warn: false
+  # become: yes
+  # become_user: "{{ ansible_user_id }}"
+
+- name: Remove exe file to make credential provider work with Rider
+  shell:
+    cmd: "rm /home/{{ ansible_user_id }}/.nuget/plugins/netcore/CredentialProvider.Microsoft/CredentialProvider.Microsoft.exe"
+  # become: yes
+  # become_user: "{{ ansible_user_id }}"
+
+- name: Readd rsa support to openssh
+  blockinfile:
+    path: "/home/{{ ansible_user_id }}/.ssh/config"
+    block: |
+      # Workaround for Azure DevOps, which ONLY supports rsa. This is not safe
+      PubkeyAcceptedKeyTypes +ssh-rsa
+    marker: "# {mark} Config for using SSH with Azure DevOps"
+  # become: yes
+  # become_user: "{{ ansible_user_id }}"
+
+- name: copy az cli autocompletion file
+  copy:
+    src: "azure/az.completion"
+    dest: /home/{{ ansible_user_id}}/.config/zsh_completion.d/az.completion"
+  #   owner: "{{ ansible_user_id }}"
+  #   group: users
+  # become: true

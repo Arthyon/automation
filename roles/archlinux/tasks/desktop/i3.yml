@@ -8,55 +8,41 @@
 
 - name: create i3 configuration directory
   file:
-    name: /home/{{ archlinux_username }}/.config/i3
+    name: /home/{{ ansible_user_id }}/.config/i3
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
 
 - name: create i3 conf.d directory
   file:
-    name: /home/{{ archlinux_username }}/.config/i3/conf.d
+    name: /home/{{ ansible_user_id }}/.config/i3/conf.d
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
 
 - name: configure i3
   copy:
     src: i3/config
-    dest: /home/{{ archlinux_username }}/.config/i3/config
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
+    dest: /home/{{ ansible_user_id }}/.config/i3/config
 
 - name: copy i3 configuration files
   copy:
     src: "i3/conf.d/{{item}}"
-    dest: /home/{{ archlinux_username}}/.config/i3/conf.d/{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id}}/.config/i3/conf.d/{{item}}
   with_items:
     - 10-base.conf
     - 10-movement.conf
-  become: true
-  become_user: "{{ archlinux_username }}"
+    - 10-audio-keys.conf
+    - 10-autostart.conf
+    - 10-keyboardlayout.conf
+    - 10-lockscreen.conf
+    - 10-visuals.conf
+    - 20-screenshot.conf
+    - 50-floating-overrides.conf
 
-- name: install i3-quickterm deps
-  pacman:
+- name: install i3-quickterm
+  kewlfft.aur.aur:
     name:
-      - python
-      - python-pip
-  become: true
-
-- name: install i3 quickterm
-  pip:
-    name: i3-quickterm
+      - python-i3-quickterm
+    state: present
 
 - name: configure i3 quickterm
   copy:
     src: i3/i3-quickterm.json
-    dest: /home/{{ archlinux_username }}/.config/i3/i3-quickterm.json
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
+    dest: /home/{{ ansible_user_id }}/.config/i3/i3-quickterm.json

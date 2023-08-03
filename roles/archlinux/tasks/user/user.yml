@@ -1,57 +1,47 @@
 ---
 - name: create normal user
   user:
-    name: "{{ archlinux_username }}"
+    name: "{{ ansible_user_id }}"
     group: users
-    home: /home/{{ archlinux_username }}
+    home: /home/{{ ansible_user_id }}
     groups:
       - wheel
     shell: /bin/zsh
+    append: true
   become: true
 
 - name: create home directory
   file:
-    name: /home/{{ archlinux_username }}
+    name: /home/{{ ansible_user_id }}
     state: directory
-    owner: "{{ archlinux_username }}"
+    owner: "{{ ansible_user_id }}"
     group: users
   become: true
 
 - name: create scripts directory
   file:
-    name: /home/{{ archlinux_username }}/bin
+    name: /home/{{ ansible_user_id }}/bin
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
-  become_user: "{{ archlinux_username }}"
 
 - name: create config directory
   file:
-    name: /home/{{ archlinux_username }}/.config
+    name: /home/{{ ansible_user_id }}/.config
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
-  become_user: "{{ archlinux_username }}"
 
 - name: copy dotfiles
   copy:
     src: "{{item}}"
-    dest: /home/{{ archlinux_username}}/.{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id}}/.{{item}}
   with_items:
     - zshenv
     - zshrc
     - zprofile
     - dmrc
-  become: true
-  become_user: "{{ archlinux_username }}"
 
 - name: do not require pwd to shutdown via cli
   lineinfile:
     path: /etc/sudoers.d/12-no-pwd-for-power
-    line: "{{ archlinux_username }} ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot"
+    line: "{{ ansible_user_id }} ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot"
     create: yes
     validate: "visudo -cf %s"
+  become: true

@@ -1,0 +1,68 @@
+{
+    "editor.fontFamily": "'Fira Code'",
+    "editor.fontSize": 18,
+    "editor.fontLigatures": true,
+    "editor.lineNumbers": "relative",
+    "editor.wordWrap": "off",
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.codeLens": false,
+    "explorer.autoReveal": false,
+    "workbench.iconTheme": "vscode-icons",
+    "window.zoomLevel": 1,
+    "update.mode": "manual",
+  
+    "debug.allowBreakpointsEverywhere": true,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/*.meta": true,
+      "**/*.js": {
+        "when": "$(basename).ts"
+      },
+      "**/*.js.map": true
+    },
+    // Telemetry
+    "redhat.telemetry.enabled": false,
+  
+    // -- Formatters --
+    "[json]": {
+      "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+      "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // -- Extensions --
+    // Vim
+    "vim.sneak": true,
+    "vim.handleKeys": {
+      "<C-c>": false,
+      "<C-v>": false,
+      "<C-y>": false,
+      "<C-f>": false,
+      "<C-b>": false
+    },
+    // VS Icons
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "Default Dark+",
+    // Rust
+    "rust-analyzer.cargo.features": "all"
+
+  
+  }
+  

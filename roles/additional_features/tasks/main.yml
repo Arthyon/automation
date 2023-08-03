@@ -1,0 +1,34 @@
+- assert:
+    that: "ansible_user_id != 'root'"
+    fail_msg: "Cannot run this playbook as root"
+  tags: always
+
+- import_tasks: development/python.yml
+  tags:
+    - dev/python
+    - never
+
+- import_tasks: development/node.yml
+  tags:
+    - dev/node
+    - never
+
+- import_tasks: development/rust.yml
+  tags:
+    - dev/rust
+    - never
+
+- import_tasks: development/dotnet.yml
+  tags:
+    - dev/dotnet
+    - never
+
+- import_tasks: environments/azure.yml
+  tags:
+    - env/azure
+    - never
+
+- import_tasks: work.yml
+  tags:
+    - work
+    - never

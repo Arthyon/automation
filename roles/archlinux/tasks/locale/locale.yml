@@ -2,11 +2,14 @@
   community.general.locale_gen:
     name: "en_US.UTF-8"
     state: present
+  become: true
 
 - name: Ensure localisation files for 'nb-NO' are available
   community.general.locale_gen:
     name: "nb_NO.UTF-8"
     state: present
+  become: true
 
 - name: Configure locale to 'en-US' # TODO Set everything but display language to norwegian
   command: localectl set-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8
+  become: true

@@ -3,16 +3,3 @@
   connection: local
   roles:
     - archlinux
-  vars_prompt:
-    - name: "archlinux_hostname"
-      prompt: "Enter computer hostname"
-      private: false
-    - name: "archlinux_username"
-      prompt: "Enter your system username"
-      private: false
-    - name: "archlinux_user_real_name"
-      prompt: "Enter your real name (for git user)"
-      private: false
-    - name: "archlinux_user_email"
-      prompt: "Enter your email address (for git user)"
-      private: false

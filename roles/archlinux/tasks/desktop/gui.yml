@@ -33,35 +33,21 @@
       - vertex-themes
       - paper-icon-theme
     state: present
-  become: true
-  become_user: aur_builder
 
 - name: create gtk3 configuration directory
   file:
-    name: /home/{{ archlinux_username }}/.config/gtk-3.0
+    name: /home/{{ ansible_user_id }}/.config/gtk-3.0
     state: directory
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
-  become_user: "{{ archlinux_username }}"
 
 - name: configure gtk3
   template:
     src: gtk/settings.ini
-    dest: /home/{{ archlinux_username }}/.config/gtk-3.0/settings.ini
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
-  become_user: "{{ archlinux_username }}"
+    dest: /home/{{ ansible_user_id }}/.config/gtk-3.0/settings.ini
 
 - name: configure gtk2
   template:
     src: "gtk/{{item}}"
-    dest: /home/{{ archlinux_username }}/{{item}}
-    owner: "{{ archlinux_username }}"
-    group: users
+    dest: /home/{{ ansible_user_id }}/{{item}}
   with_items:
     - .gtkrc-2.0
     - .gtkrc-2.0.mine
-  become: true
-  become_user: "{{ archlinux_username }}"

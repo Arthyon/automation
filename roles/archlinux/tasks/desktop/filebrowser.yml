@@ -1,0 +1,21 @@
+- name: install nemo and ranger
+  pacman:
+    name:
+      - nemo
+      - ranger
+  become: true
+
+- name: configure nemo
+  shell: |
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec alacritty
+    gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
+
+- name: create ranger configuration directory
+  file:
+    name: /home/{{ ansible_user_id }}/.config/ranger
+    state: directory
+
+- name: copy ranger configuration
+  copy:
+    src: ranger/rc.conf
+    dest: /home/{{ ansible_user_id }}/.config/ranger/rc.conf

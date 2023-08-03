@@ -4,19 +4,18 @@
     name: git
   become: true
 
-- name: configure git name
-  git_config:
-    name: user.name
-    value: "{{ archlinux_user_real_name }}"
-    scope: global
-  become: true
-  become_user: "{{ archlinux_username }}"
+- name: create git configuration directory
+  file:
+    name: /home/{{ansible_user_id}}/.config/git
+    state: directory
 
-- name: configure git email
-  git_config:
-    name: user.email
-    value: "{{ archlinux_user_email }}"
-    scope: global
-  become: true
-  become_user: "{{ archlinux_username }}"
+- name: configure git extension
+  template:
+    src: shell/20-git-ext
+    dest: /home/{{ansible_user_id}}/.config/zsh.d/
 
+- name: create git ext script
+  copy:
+    src: git/git-ext
+    dest: /home/{{ansible_user_id}}/.config/git/git-ext
+    mode: "u=rwx"
