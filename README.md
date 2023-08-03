@@ -52,7 +52,7 @@
 
 ## Backups
 
-Set up snapper (TODO)
+Setup snapper TODO
 
 ## Polybar
 
@@ -86,6 +86,13 @@ Use the playbook `features.yml` and scope using tags.
 
 - If polybar wlan indicator does not work, replace interface name in polybar wlan module with your interface name
 
-# Thunderbolt
+## Thunderbolt
 
-To be able to use all usb ports on connected thunderbolt screens, add `pci=hpbussize=0x33` as kernel argument to boot entry (`boot/loader/entries/*.conf`)
+- If not all usb ports on a screen is recognized, add `pci=hpbussize=0x33` as kernel argument to boot entry (`boot/loader/entries/*.conf`)
+- If a screen refuses to be identified, run `xset dpms force off`
+
+## Not using correct DNS server
+
+This should be fixed permanently!
+
+`systemctl restart systemd-resolved`
