@@ -55,7 +55,6 @@ padding-left = 0
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
-separator = "|"
 
 font-0 = FuraMono-Regular:size=10;3
 font-1 = unifont:size=6:heavy;-2
@@ -90,6 +89,7 @@ format-foreground = ${colors.light-grey}
 type = internal/i3
 format = <label-state>
 index-sort = true
+pin-workspaces = true
 
 label-focused = %index%
 label-focused-background = ${colors.overlay}
@@ -272,7 +272,7 @@ label-volume = %percentage%% 
 type = internal/battery
 battery = BAT0
 adapter = AC0
-full-at = 100
+full-at = 98
 
 poll-interval = 5
 

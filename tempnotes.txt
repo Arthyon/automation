@@ -1,8 +1,0 @@
-Changed:
-configure lxdm
-configure alacritty
-template wallpaper script (something to do with scaling I think?)
-copy polybar configuration files:
-    config
-    inputlang.sh
-configure picom
