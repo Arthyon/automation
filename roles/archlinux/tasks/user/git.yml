@@ -1,7 +1,9 @@
 ---
 - name: install git
   pacman:
-    name: git
+    name:
+      - git
+      - git-lfs
   become: true
 
 - name: create git configuration directory

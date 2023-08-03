@@ -1,7 +1,9 @@
 ---
 - name: install docker
   pacman:
-    name: docker
+    name:
+      - docker
+      - docker-compose
   become: true
 
 - name: add user to docker group
