@@ -52,7 +52,18 @@
 
 ## Backups
 
-Setup snapper TODO
+If using the default btrfs-setup from `archinstall`:
+```
+sudo umount /.snapshots
+sudo rm -r /.snapshots
+sudo snapper -c root create-config /
+sudo btrfs subvolume delete /.snapshots
+sudo mkdir /.snapshots
+```
+
+- Add fstab entry for the snapshot directory created by `archinstall`.
+- `sudo chmod 750 /.snapshots`
+
 
 ## Polybar
 
