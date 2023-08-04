@@ -48,6 +48,7 @@
 - import_tasks: desktop/terminal.yml
 - import_tasks: desktop/filebrowser.yml
 - import_tasks: desktop/applications.yml
+- import_tasks: desktop/gaming.yml
 
 # Development
 - import_tasks: development/general.yml

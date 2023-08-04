@@ -9,7 +9,6 @@
       - powerline-fonts
       - ttf-fira-code # code
       - ttf-font-awesome # polybar
-      - ttf-liberation # steam
   become: true
 
 - name: install GTK

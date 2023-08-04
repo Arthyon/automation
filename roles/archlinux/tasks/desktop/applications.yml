@@ -18,7 +18,6 @@
       - firefox
       - bitwarden
       - spotify-launcher
-      - steam
       - ranger
       - lib32-libsm # Needed by Guitar pro
       - lib32-pipewire-jack # Needed by Guitar pro
