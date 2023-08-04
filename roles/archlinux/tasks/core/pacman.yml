@@ -57,3 +57,9 @@
     name: paccache.timer
     enabled: true
   become: true
+
+- name: start reflector timer
+  systemd:
+    name: reflector.timer
+    enabled: true
+  become: true
