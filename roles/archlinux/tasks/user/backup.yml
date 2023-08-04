@@ -1,12 +1,11 @@
 ---
-- name: install snapper
+- name: install snapper and tools
   pacman:
     name:
       - cronie
       - snapper
+      - snap-pac
   become: true
-
-# TODO Configure snapper
 
 - name: start cronie service
   systemd:
