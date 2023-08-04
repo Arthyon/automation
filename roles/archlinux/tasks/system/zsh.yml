@@ -43,6 +43,7 @@
   with_items:
     - 10-qt
     - 10-base
+    - 10-xdg
     - 10-firefox
     - 10-vi-mode
 

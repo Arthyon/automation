@@ -1,0 +1,27 @@
+- name: install game related applications
+  pacman:
+    name:
+      - steam
+      - gamemode
+      - ttf-liberation # steam
+  become: true
+
+- name: configure gamemode
+  copy:
+    src: gaming/gamemode.ini
+    dest: /home/{{ ansible_user_id }}/.config/gamemode.ini
+
+- name: add user to gamemode group
+  user:
+    name: "{{ ansible_user_id }}"
+    groups:
+      - gamemode
+    append: true
+  become: true
+
+- name: Make steam run in gamemode
+  lineinfile:
+    path: /usr/share/applications/steam.desktop
+    regexp: "^Exec=/usr/bin/steam-runtime.*$"
+    line: "Exec=gamemoderun /usr/bin/steam-runtime %U"
+  become: true
