@@ -6,8 +6,6 @@
       - slack-desktop
       - teams
     state: present
-  # become: true
-  # become_user: aur_builder
 
 # Ref: https://docs.microsoft.com/en-us/answers/questions/42095/sharing-screen-not-working-anymore-bug.html
 - name: Check that bugged screen sharing overlay exists
