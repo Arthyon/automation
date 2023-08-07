@@ -8,6 +8,10 @@ case $command in
 		git fetch -p
 		git branch -vv | awk '/: gone/ {print $1}' | xargs git branch -d
 		;;
+	forcecleanup)
+		git fetch -p
+		git branch -vv | awk '/: gone/ {print $1}' | xargs git branch -D
+		;;
 	update)
 		currentBranch="$(git symbolic-ref --short HEAD)"
 		defaultBranch="$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')"
@@ -21,6 +25,7 @@ case $command in
 		echo "List of commands:"
 		echo "- update"
 		echo "- cleanup"
+		echo "- forcecleanup"
 		;;
 	*)
 		echo "$command is not a valid command"
