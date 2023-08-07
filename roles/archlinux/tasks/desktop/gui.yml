@@ -26,12 +26,12 @@
       - lxappearance
   become: true
 
-- name: install aur gui themes
-  kewlfft.aur.aur:
+- name: install themes
+  pacman:
     name:
-      - vertex-themes
-      - paper-icon-theme
-    state: present
+      - materia-gtk-theme
+      - papirus-icon-theme
+  become: true
 
 - name: create gtk3 configuration directory
   file:
