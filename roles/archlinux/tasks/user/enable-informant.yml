@@ -3,7 +3,6 @@
   kewlfft.aur.aur:
     name: informant
     state: present
-  changed_when: false
 
 - name: add user to informant group
   user:
@@ -12,3 +11,10 @@
       - informant
     append: true
   become: true
+
+- name: Enable informant
+  file:
+    path: "/etc/pacman.d/hooks/00-informant.hook"
+    state: absent
+  become: true
+  changed_when: false
