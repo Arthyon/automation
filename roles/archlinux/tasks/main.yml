@@ -1,6 +1,6 @@
 ---
-# Remove informant (will break automatic pacman if installed)
-- import_tasks: user/remove-informant.yml
+# Disable informant (will break automatic pacman if installed)
+- import_tasks: user/disable-informant.yml
 
 # Install bare necessities
 - import_tasks: core/pacman.yml
@@ -56,5 +56,5 @@
 # Set up login manager
 - import_tasks: login-manager/main.yml
 
-# Install informant (will break automatic pacman if installed earlier)
-- import_tasks: user/add-informant.yml
+# Enable informant (will break installation if enabled during setup)
+- import_tasks: user/enable-informant.yml

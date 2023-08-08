@@ -1,0 +1,14 @@
+---
+- name: create pacman hooks directory
+  file:
+    name: /etc/pacman.d/hooks
+    state: directory
+  become: true
+
+- name: Disable informant
+  file:
+    src: /dev/null
+    dest: "/etc/pacman.d/hooks/00-informant.hook"
+    state: link
+  changed_when: false
+  become: true
