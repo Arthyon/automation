@@ -1,7 +1,10 @@
 ---
 - name: Install zsh
   pacman:
-    name: zsh
+    name:
+      - zsh
+      - zsh-syntax-highlighting
+      - zsh-autosuggestions
   become: true
 
 - name: Clone oh-my-zsh repo
@@ -35,6 +38,7 @@
     - 10-history
     - 10-utility-functions
     - 10-vim
+    - 10-fishlike
 
 - name: copy zshenv files
   copy:
