@@ -50,6 +50,7 @@
     - 10-xdg
     - 10-firefox
     - 10-vi-mode
+    - 10-fishlike
 
 - name: Add dummy file to completion directory
   copy:
