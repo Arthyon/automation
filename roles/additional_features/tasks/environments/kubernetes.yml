@@ -1,0 +1,45 @@
+---
+- name: install kubectl and kustomize
+  pacman:
+    name:
+      - kubectl
+      - kustomize
+  become: true
+
+- name: Check if kubectl config exists
+  stat:
+    path: /home/{{ansible_user_id}}/.kube/config
+  register: check_config
+
+- name: Prompt for Kubernetes ip
+  pause:
+    prompt: "Kubernetes IP"
+  register: kubernetes_ip_prompt
+  no_log: true
+  when: not check_config.stat.exists
+
+- name: Set kubernetes_ip
+  set_fact:
+    kubernetes_ip: "{{ kubernetes_ip_prompt.user_input }}"
+  no_log: true
+  when: not check_config.stat.exists
+
+- name: Generate kubectl config
+  shell: microk8s config > config
+  delegate_to: "{{ kubernetes_ip }}"
+  when: not check_config.stat.exists
+
+- name: create .kube-directory
+  file:
+    name: ~/.kube
+    state: directory
+  when: not check_config.stat.exists
+
+- name: copy kubectl config
+  shell: "scp {{ kubernetes_ip }}:config ~/.kube/config"
+  when: not check_config.stat.exists
+
+- name: remove kubectl config on remote
+  shell: rm config
+  delegate_to: "{{ kubernetes_ip }}"
+  when: not check_config.stat.exists
