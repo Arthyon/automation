@@ -21,3 +21,17 @@
     src: git/git-ext
     dest: /home/{{ansible_user_id}}/.config/git/git-ext
     mode: "u=rwx"
+
+- name: copy git config
+  copy:
+    src: git/gitconfig
+    dest: /home/{{ ansible_user_id }}/.config/git/gitconfig
+
+- name: reference config from main gitconfig
+  blockinfile:
+    path: "/home/{{ ansible_user_id }}/.gitconfig"
+    create: true
+    block: |
+      [include]
+          path = .config/git/gitconfig
+    marker: "# {mark} Default git configuration"
