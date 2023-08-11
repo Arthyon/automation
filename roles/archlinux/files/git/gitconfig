@@ -1,0 +1,9 @@
+[diff]
+	colorMoved = zebra
+[status]
+	short = true
+	branch = true
+[format]
+	pretty = oneline
+[log]
+	abbrevCommit = true
