@@ -28,6 +28,11 @@
     - env/azure
     - never
 
+- import_tasks: environments/kubernetes.yml
+  tags:
+    - env/kubernetes
+    - never
+
 - import_tasks: work.yml
   tags:
     - work
