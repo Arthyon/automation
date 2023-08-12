@@ -8,7 +8,8 @@
     name: /mnt/media
     state: directory
     owner: root
-    group: users
+    group: 100
+    mode: "2777"
   become: true
 
 - name: Add nfs server to fstab

@@ -10,6 +10,12 @@
     state: present
   become: true
 
-- name: Configure locale to 'en-US' # TODO Set everything but display language to norwegian
+- name: Check current locale
+  command: localectl
+  register: check_locale
+  changed_when: "'en_US.UTF-8' not in check_locale.stdout_lines[0]"
+
+- name: Configure locale to 'en-US'
   command: localectl set-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8
   become: true
+  when: check_locale.changed
