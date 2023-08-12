@@ -4,6 +4,8 @@ Plug 'zacanger/angr.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -15,6 +17,8 @@ try
 	colorscheme angr
 catch
 endtry
+
+let g:airline_theme='angr'
 
 if (exists('+colorcolumn'))
 	set colorcolumn=80
