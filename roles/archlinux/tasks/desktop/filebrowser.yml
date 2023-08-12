@@ -5,10 +5,17 @@
       - ranger
   become: true
 
-- name: configure nemo
-  shell: |
-    gsettings set org.cinnamon.desktop.default-applications.terminal exec alacritty
-    gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
+- name: Set terminal in nemo
+  dconf:
+    key: "/org/cinnamon/desktop/applications/terminal/exec"
+    value: "'alacritty'"
+    state: present
+
+- name: Set terminal args in nemo
+  dconf:
+    key: "/org/cinnamon/desktop/applications/terminal/exec-arg"
+    value: "'-e'"
+    state: present
 
 - name: create ranger configuration directory
   file:

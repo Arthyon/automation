@@ -8,6 +8,7 @@
   copy:
     src: vim/vimrc
     dest: /home/{{ ansible_user_id }}/.vimrc
+  register: vimconfig
 
 - name: Create autoload directory
   file:
@@ -21,3 +22,4 @@
 
 - name: Install plugins
   shell: vim -E -s -c "source /home/{{ ansible_user_id }}/.vimrc" +PlugInstall -c qa
+  changed_when: vimconfig.changed
