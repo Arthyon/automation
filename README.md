@@ -36,12 +36,17 @@
 - Configure global git config:
   - `git config --global user.name "<name>"`
   - `git config --global user.email "<email>"`
+
 - Configure gpg:
   - If needed, create new: `gpg --full-generate-key`
   - `gpg --list-secret-keys --keyid-format=long`
   - `git config --global user.signingkey <keyid>`
   - `git config --global commit.gpgsign true`
   - Export public key: `gpg --armor --export <keyid> | xclip`
+
+- Set up default autorandr profile
+  - `autorandr --save undocked`
+  - `autorandr --default undocked`
 
 
 ## Background images
