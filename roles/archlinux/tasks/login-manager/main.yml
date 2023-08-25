@@ -20,6 +20,15 @@
     group: root
   become: true
 
+- name: add postlogin script
+  copy:
+    src: lxdm/PostLogin
+    dest: /etc/lxdm/PostLogin
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+
 - name: start lxdm service
   systemd:
     name: lxdm

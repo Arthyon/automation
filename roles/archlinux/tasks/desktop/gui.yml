@@ -24,7 +24,19 @@
       - arandr
       - lxrandr
       - lxappearance
+      - autorandr
   become: true
+
+- name: Add autorandr script directory
+  file:
+    name: /home/{{ ansible_user_id }}/.config/autorandr/postswitch.d
+    state: directory
+
+- name: copy postswitch script
+  copy:
+    src: autorandr/relaunch_polybar.sh
+    dest: /home/{{ ansible_user_id }}/.config/autorandr/postswitch.d/relaunch_polybar.sh
+    mode: 0755
 
 - name: install themes
   pacman:
