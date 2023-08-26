@@ -37,3 +37,8 @@
   tags:
     - work
     - never
+
+- import_tasks: gaming/lutris.yml
+  tags:
+    - gaming/lutris
+    - never
