@@ -32,7 +32,6 @@
 - name: install Intel display drivers
   pacman:
     name:
-      - xf86-video-intel
       # VA-API support varies by generation, so we'll install all of the
       # applicable packages and hope one works
       - intel-media-driver
