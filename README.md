@@ -69,6 +69,9 @@ sudo mkdir /.snapshots
 - Add fstab entry for the snapshot directory created by `archinstall`.
 - `sudo chmod 750 /.snapshots`
 
+## Guitar pro
+- Download soundbanks from https://customer-v6.guitar-pro.com/soundbanks_download.php
+- run `sudo opt/GuitarPro6/GPBankInstaller /path/to/Banks-r370.gpbank /opt/GuitarPro6/`
 
 ## Polybar
 
