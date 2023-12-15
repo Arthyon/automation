@@ -107,7 +107,7 @@ Use the playbook `features.yml` and scope using tags.
 
 ## Thunderbolt
 
-- If not all usb ports on a screen is recognized, add `pci=hpbussize=0x33` as kernel argument to boot entry (`boot/loader/entries/*.conf`)
+- If not all usb ports on a screen is recognized, add `pci=realloc,assign-busses,hpbussize=0x33,hpmemsize=256M` as kernel argument to boot entry (`boot/loader/entries/*.conf`)
 - If a screen refuses to be identified, run `xset dpms force off`
 
 ## Not using correct DNS server
