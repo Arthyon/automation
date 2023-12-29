@@ -8,8 +8,3 @@
   file:
     name: /home/{{ ansible_user_id }}/.config/alacritty
     state: directory
-
-- name: configure alacritty
-  copy:
-    src: alacritty/alacritty.yml
-    dest: /home/{{ ansible_user_id }}/.config/alacritty/alacritty.yml
