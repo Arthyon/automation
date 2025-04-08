@@ -42,3 +42,8 @@
   tags:
     - gaming/lutris
     - never
+
+- import_tasks: nrk.yml
+  tags:
+    - nrk
+    - never

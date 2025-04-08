@@ -2,7 +2,7 @@
 - name: install work applications from aur
   kewlfft.aur.aur:
     name:
-      - postman-bin
+      - bruno-bin
       - slack-desktop
       - teams
     state: present

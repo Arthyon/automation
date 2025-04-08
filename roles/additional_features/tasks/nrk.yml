@@ -1,0 +1,10 @@
+- name: copy programid script file
+  copy:
+    src: "nrk/programid.sh"
+    dest: /home/{{ ansible_user_id}}/.config/rofi/programid.sh
+    mode: 0755
+
+- name: Add programid script keybindings
+  lineinfile:
+    dest: /home/{{ ansible_user_id }}/.config/i3/conf.d/30-rofi.conf
+    line: 'bindsym $mod+o exec rofi -modi "Open program":"~/.config/rofi/programid.sh" -show "Open program" -no-custom'
