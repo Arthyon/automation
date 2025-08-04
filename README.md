@@ -26,7 +26,8 @@
 ## General setup
 
 - Set up JottaCloud
-  - `run_jottad` 
+
+  - `run_jottad`
   - `jotta-cli login`
   - `jotta-cli sync setup --root ~/JottaCloud`
   - `jotta-cli sync start`
@@ -34,10 +35,12 @@
 - Copy wireguard config to `/etc/wireguard/<myclient>.conf`
 
 - Configure global git config:
+
   - `git config --global user.name "<name>"`
   - `git config --global user.email "<email>"`
 
 - Configure gpg:
+
   - If needed, create new: `gpg --full-generate-key`
   - `gpg --list-secret-keys --keyid-format=long`
   - `git config --global user.signingkey <keyid>`
@@ -48,7 +51,6 @@
   - `autorandr --save undocked`
   - `autorandr --default undocked`
 
-
 ## Background images
 
 - Place an image in `$HOME/.wallpaper` to set background.
@@ -58,6 +60,7 @@
 ## Backups
 
 If using the default btrfs-setup from `archinstall`:
+
 ```
 sudo umount /.snapshots
 sudo rm -r /.snapshots
@@ -70,6 +73,7 @@ sudo mkdir /.snapshots
 - `sudo chmod 750 /.snapshots`
 
 ## Guitar pro
+
 - Download soundbanks from https://customer-v6.guitar-pro.com/soundbanks_download.php
 - run `sudo opt/GuitarPro6/GPBankInstaller /path/to/Banks-r370.gpbank /opt/GuitarPro6/`
 
@@ -115,3 +119,19 @@ Use the playbook `features.yml` and scope using tags.
 This should be fixed permanently!
 
 `systemctl restart systemd-resolved`
+
+## Issues with hardware acceleration
+
+Can usually be disabled pr. app. Some are more obscure than others.
+
+### Jetbrains toolbox
+
+Add
+
+```json
+"internal": {
+        "graphics_api": "Software"
+    }
+```
+
+to `~/.local/share/JetBrains/Toolbox/.settings.json`
