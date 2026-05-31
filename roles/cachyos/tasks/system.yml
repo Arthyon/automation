@@ -1,0 +1,19 @@
+- name: change user shell to zsh 
+  become: true
+  user:
+    name: "{{ ansible_facts['user_id'] }}"
+    shell: /usr/bin/zsh
+
+- name: create scripts directory
+  become: true
+  file:
+    name: /home/{{ ansible_facts['user_id'] }}/bin
+    state: directory
+
+- name: do not require pwd to shutdown via cli
+  lineinfile:
+    path: /etc/sudoers.d/12-no-pwd-for-power
+    line: "{{ ansible_facts['user_id'] }} ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff,/usr/bin/systemctl reboot"
+    create: yes
+    validate: "visudo -cf %s"
+  become: true

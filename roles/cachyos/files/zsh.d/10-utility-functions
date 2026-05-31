@@ -1,0 +1,9 @@
+# Shortcut to get the disk size of a directory and contents
+sizeof() {
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: sizeof <directory>"
+        return
+    fi
+    du -ch "$1" | grep total
+    return 0
+}

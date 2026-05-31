@@ -1,0 +1,27 @@
+- name: install gaming packages
+  become: true
+  pacman:
+    name:
+      - cachyos-gaming-applications # meta package
+
+- name: install applications
+  become: true
+  pacman:
+    name:
+      - ranger
+      - yay
+      - spotify-launcher
+      - vivaldi
+      - ttf-fira-code
+      - code
+
+- name: install from aur
+  pacman:
+    name:
+      - jotta-cli
+    executable: yay
+
+- import_tasks: ranger.yml
+- import_tasks: vim.yml
+- import_tasks: vscode.yml
+- import_tasks: git.yml

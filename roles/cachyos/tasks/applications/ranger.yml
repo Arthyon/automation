@@ -1,0 +1,15 @@
+- name: install ranger
+  become: true
+  pacman:
+    name:
+      - ranger
+
+- name: create ranger configuration directory
+  file:
+    name: /home/{{ ansible_facts['user_id'] }}/.config/ranger
+    state: directory
+
+- name: copy ranger configuration
+  copy:
+    src: ranger/rc.conf
+    dest: /home/{{ ansible_facts['user_id'] }}/.config/ranger/rc.conf
