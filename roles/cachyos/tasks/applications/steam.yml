@@ -1,0 +1,5 @@
+- name: copy steam big picture mode session
+  become: true
+  copy:
+    src: steam/steam-big-picture.desktop
+    dest: /usr/share/wayland-sessions/steam-big-picture.desktop

@@ -1,3 +1,9 @@
+- name: install utilities
+  become: true
+  pacman:
+    name:
+      - wl-clipboard
+
 - name: change user shell to zsh 
   become: true
   user:

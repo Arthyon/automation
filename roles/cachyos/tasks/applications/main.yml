@@ -25,3 +25,4 @@
 - import_tasks: vim.yml
 - import_tasks: vscode.yml
 - import_tasks: git.yml
+- import_tasks: steam.yml
