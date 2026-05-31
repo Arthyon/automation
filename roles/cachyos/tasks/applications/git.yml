@@ -1,0 +1,38 @@
+---
+- name: install git
+  pacman:
+    name:
+      - git
+      - git-lfs
+  become: true
+
+- name: create git configuration directory
+  file:
+    name: /home/{{ ansible_facts['user_id'] }}/.config/git
+    state: directory
+
+
+- name: create git ext script
+  copy:
+    src: git/git-ext
+    dest: /home/{{ansible_facts['user_id']}}/.config/git/git-ext
+    mode: "u=rwx"
+
+- name: configure git extension
+  template:
+    src: git/20-git-ext
+    dest: /home/{{ansible_facts['user_id']}}/.config/zsh.d/
+
+- name: copy git config
+  template:
+    src: git/gitconfig
+    dest: /home/{{ ansible_facts['user_id'] }}/.config/git/gitconfig
+
+- name: reference config from main gitconfig
+  blockinfile:
+    path: "/home/{{ ansible_facts['user_id'] }}/.gitconfig"
+    create: true
+    block: |
+      [include]
+          path = .config/git/gitconfig
+    marker: "# {mark} Default git configuration"

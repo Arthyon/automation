@@ -1,0 +1,13 @@
+- name: install code
+  become: true
+  pacman:
+    name:
+      - code
+
+- name: replace vs code settings
+  copy:
+    src: "code/{{item}}"
+    dest: "/home/{{ ansible_facts['user_id'] }}/.config/Code - OSS/User/{{item}}"
+  with_items:
+    - keybindings.json
+    - settings.json

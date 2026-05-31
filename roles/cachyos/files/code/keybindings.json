@@ -1,0 +1,32 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+      "key": "ctrl+,",
+      "command": "workbench.action.quickOpen"
+    },
+    {
+      "key": "ctrl+alt+l",
+      "command": "workbench.files.action.showActiveFileInExplorer"
+    },
+    {
+      "key": "ctrl+e ctrl+d",
+      "command": "editor.action.formatSelection",
+      "when": "editorHasDocumentSelectionFormattingProvider && editorHasSelection && editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "ctrl+k ctrl+f",
+      "command": "editor.action.formatSelection",
+      "when": "editorHasDocumentSelectionFormattingProvider && editorHasSelection && editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "ctrl+k ctrl+r",
+      "command": "editor.action.referenceSearch.trigger",
+      "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+      "key": "alt+q",
+      "command": "editor.action.goToImplementation",
+      "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    }
+  ]
+  
