@@ -1,5 +1,7 @@
 
 - import_tasks: system.yml
+- import_tasks: aur_builder.yml
 - import_tasks: zsh.yml
 - import_tasks: applications/main.yml
 - import_tasks: cosmic.yml
+

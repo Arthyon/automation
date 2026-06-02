@@ -1,2 +1,0 @@
-# Add globally installed python packages to path
-PATH="$HOME/.local/bin:$PATH"

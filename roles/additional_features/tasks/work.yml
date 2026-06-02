@@ -4,17 +4,25 @@
     name:
       - bruno-bin
       - slack-desktop
-      - teams
     state: present
 
-# Ref: https://docs.microsoft.com/en-us/answers/questions/42095/sharing-screen-not-working-anymore-bug.html
-- name: Check that bugged screen sharing overlay exists
-  stat:
-    path: /usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay
-  register: overlay
+- name: install kubectl and kustomize
+  pacman:
+    name:
+      - kubectl
+      - kustomize
+      - kubectx
   become: true
 
-- name: Fix screen sharing bug in teams when using i3
-  command: mv "{{ overlay.stat.path }}" "{{ overlay.stat.path }}.bak"
-  when: overlay.stat.exists == true
-  become: true
+- name: install azure tools (AUR)
+  kewlfft.aur.aur:
+    name:
+      - azure-cli
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: copy az cli autocompletion file
+  copy:
+    src: "azure/az.completion"
+    dest: /home/{{ ansible_facts['user_id'] }}/.config/zsh_completion.d/az.completion"

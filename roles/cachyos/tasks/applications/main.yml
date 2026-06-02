@@ -16,10 +16,12 @@
       - code
 
 - name: install from aur
-  pacman:
+  kewlfft.aur.aur:
     name:
       - jotta-cli
-    executable: yay
+    state: present
+  become: yes
+  become_user: aur_builder
 
 - import_tasks: ranger.yml
 - import_tasks: vim.yml

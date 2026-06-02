@@ -3,11 +3,6 @@
     fail_msg: "Cannot run this playbook as root"
   tags: always
 
-- import_tasks: development/python.yml
-  tags:
-    - dev/python
-    - never
-
 - import_tasks: development/node.yml
   tags:
     - dev/node
@@ -23,27 +18,7 @@
     - dev/dotnet
     - never
 
-- import_tasks: environments/azure.yml
-  tags:
-    - env/azure
-    - never
-
-- import_tasks: environments/kubernetes.yml
-  tags:
-    - env/kubernetes
-    - never
-
 - import_tasks: work.yml
   tags:
     - work
-    - never
-
-- import_tasks: gaming/lutris.yml
-  tags:
-    - gaming/lutris
-    - never
-
-- import_tasks: nrk.yml
-  tags:
-    - nrk
     - never
